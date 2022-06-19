@@ -24,8 +24,6 @@ jwt:
   secret: secret-terces
 
 spring:
-  application:
-    name: xcity-customers
   cloud:
     vault:
       uri: http://localhost:8200
