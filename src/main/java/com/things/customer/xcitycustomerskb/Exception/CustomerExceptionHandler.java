@@ -14,22 +14,22 @@ public class CustomerExceptionHandler {
     private final static String INTERNAL_SERVER_MESSAGE = "Unhandled exception in service";
 
     @ExceptionHandler(value = {InvalidException.class})
-    public final ResponseEntity<GeneralErrorFormatForPostman> handleInvalidException(Exception ex) {
+    public final ResponseEntity<PostmanFormat> handleInvalidException(Exception ex) {
         log.error("InvalidException: {} {}", ex.getMessage(), ex);
-        GeneralErrorFormatForPostman generalErrorFormatForPostman = new GeneralErrorFormatForPostman(NOT_FOUND_MESSAGE, String.valueOf(HttpStatus.NOT_FOUND.value()));
-        return new ResponseEntity<>(generalErrorFormatForPostman, HttpStatus.NOT_FOUND);
+        PostmanFormat postmanFormat = new PostmanFormat(NOT_FOUND_MESSAGE, String.valueOf(HttpStatus.NOT_FOUND.value()));
+        return new ResponseEntity<>(postmanFormat, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(value = {InternalServerException.class})
-    public final ResponseEntity<GeneralErrorFormatForPostman> handleInternalServerException(Exception ex) {
+    public final ResponseEntity<PostmanFormat> handleInternalServerException(Exception ex) {
         log.error("InternalServerException: {} {}", ex.getMessage(), ex);
-        GeneralErrorFormatForPostman generalErrorFormatForPostman = new GeneralErrorFormatForPostman(INTERNAL_SERVER_MESSAGE, String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
-        return new ResponseEntity<>(generalErrorFormatForPostman, HttpStatus.INTERNAL_SERVER_ERROR);
+        PostmanFormat postmanFormat = new PostmanFormat(INTERNAL_SERVER_MESSAGE, String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        return new ResponseEntity<>(postmanFormat, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     @ExceptionHandler(value = {ResourceAccessException.class})
-    public final ResponseEntity<GeneralErrorFormatForPostman> handleResourceAccessException(Exception ex) {
+    public final ResponseEntity<PostmanFormat> handleResourceAccessException(Exception ex) {
         log.error("InternalServerException: {} {}", ex.getMessage(), ex);
-        GeneralErrorFormatForPostman generalErrorFormatForPostman = new GeneralErrorFormatForPostman(INTERNAL_SERVER_MESSAGE, String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
-        return new ResponseEntity<>(generalErrorFormatForPostman, HttpStatus.valueOf(500));
+        PostmanFormat postmanFormat = new PostmanFormat(INTERNAL_SERVER_MESSAGE, String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        return new ResponseEntity<>(postmanFormat, HttpStatus.valueOf(500));
     }
 }
