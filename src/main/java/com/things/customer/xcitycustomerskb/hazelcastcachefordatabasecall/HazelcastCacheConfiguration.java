@@ -1,4 +1,4 @@
-package com.things.customer.xcitycustomerskb.config;
+package com.things.customer.xcitycustomerskb.hazelcastcachefordatabasecall;
 
 import com.hazelcast.config.*;
 import org.springframework.context.annotation.Bean;

@@ -1,6 +1,5 @@
-package com.things.customer.xcitycustomerskb.service;
+package com.things.customer.xcitycustomerskb.hazelcastcachefordatabasecall;
 
-import com.things.customer.xcitycustomerskb.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
@@ -32,21 +31,22 @@ public class EmployeeDaoImpl extends JdbcDaoSupport implements EmployeeDAO {
     }
 
     @Override
-    public void insertEmployee(Employee emp) {
+    public void insertEmployee(Employee emp, Integer id) {
         String sql = "INSERT INTO KB_EMPLOYEES " +
-                "(id, first_name, last_name) VALUES (?, ?, ?)";
-        getJdbcTemplate().update(sql, emp.getId(), emp.getFirstName(), emp.getLastName());
+                "(id, first_name, last_name, email) VALUES (?, ?, ?,?)";
+        getJdbcTemplate().update(sql, id, emp.getFirstName(), emp.getLastName(), emp.getEmail());
     }
 
     @Override
     public void insertEmployees(List<Employee> employees) {
-        String sql = "INSERT INTO KB_EMPLOYEES " + "(id, first_name, last_name) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO KB_EMPLOYEES " + "(id, first_name, last_name, email) VALUES (?, ?, ?, ?)";
         getJdbcTemplate().batchUpdate(sql, new BatchPreparedStatementSetter() {
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 Employee employee = employees.get(i);
                 ps.setInt(1, employee.getId());
                 ps.setString(2, employee.getFirstName());
                 ps.setString(3, employee.getLastName());
+                ps.setString(4, employee.getEmail());
             }
 
             public int getBatchSize() {
@@ -61,27 +61,30 @@ public class EmployeeDaoImpl extends JdbcDaoSupport implements EmployeeDAO {
         String sql = "SELECT * FROM KB_EMPLOYEES ";
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 
-        List<Employee> result = new ArrayList<>();
+        List<Employee> resultList = new ArrayList<>();
         for (Map<String, Object> row : rows) {
             Employee emp = new Employee();
             emp.setId((Integer) row.get("id"));
             emp.setFirstName((String) row.get("first_name"));
             emp.setLastName((String) row.get("last_name"));
-            result.add(emp);
+            emp.setEmail((String) row.get("email"));
+            resultList.add(emp);
         }
 
-        return result;
+        return resultList;
     }
 
     @Override
-    public Employee getEmployeeById(String id) {
+    public Employee getEmployeeById(Integer id) {
         String sql = "SELECT * FROM KB_EMPLOYEES  WHERE id = ?";
         return getJdbcTemplate().queryForObject(sql, new Object[]{id}, new RowMapper<Employee>() {
             @Override
             public Employee mapRow(ResultSet rs, int rwNumber) throws SQLException {
                 Employee emp = new Employee();
-                emp.setFirstName(rs.getString("empName"));
-                emp.setLastName(rs.getString("empName"));
+                emp.setId(id); //this will come from path variable in url
+                emp.setFirstName(rs.getString("first_name"));
+                emp.setLastName(rs.getString("last_name"));
+                emp.setEmail(rs.getString("email"));
                 return emp;
             }
         });

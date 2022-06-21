@@ -1,8 +1,8 @@
 package com.things.customer.xcitycustomerskb;
 
 import com.things.customer.xcitycustomerskb.config.VaultConfig;
-import com.things.customer.xcitycustomerskb.model.Employee;
-import com.things.customer.xcitycustomerskb.service.EmployeeService;
+import com.things.customer.xcitycustomerskb.hazelcastcachefordatabasecall.Employee;
+import com.things.customer.xcitycustomerskb.hazelcastcachefordatabasecall.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,28 +50,28 @@ public class XcityCustomersKbApplication implements CommandLineRunner {
         emp2.setLastName("runner");
 
 
-        employeeService.insertEmployee(emp);
+        //employeeService.insertEmployee(emp);
 
         List<Employee> employees = new ArrayList<>();
         employees.add(emp1);
         employees.add(emp2);
-        employeeService.insertEmployees(employees);
+       // employeeService.insertEmployees(employees);
 
 		System.out.println("______________________________________");
         System.out.println("Attempting to make a call  to DataBase");
 		System.out.println("______________________________________");
-        List<Employee> employeeList1 = employeeService.getAllEmployees();
-        for (Employee employee : employeeList1) {
-            System.out.println(employee);
-        }
+//        List<Employee> employeeList1 = employeeService.getAllEmployees();
+//        for (Employee employee : employeeList1) {
+//            System.out.println(employee);
+//        }
 
 		System.out.println("_______________________________");
         System.out.println("Attempting to Fetch from Cache");
 		System.out.println("_______________________________\n");
-        List<Employee> employeeList2 = employeeService.getAllEmployees();
-        for (Employee employee : employeeList2) {
-            System.out.println(employee);
-        }
+//        List<Employee> employeeList2 = employeeService.getAllEmployees();
+//        for (Employee employee : employeeList2) {
+//            System.out.println(employee);
+//        }
 
 		System.out.println("\n");
 

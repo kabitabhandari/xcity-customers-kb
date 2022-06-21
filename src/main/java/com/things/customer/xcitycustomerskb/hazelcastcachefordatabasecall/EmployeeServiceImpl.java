@@ -1,6 +1,5 @@
-package com.things.customer.xcitycustomerskb.service;
+package com.things.customer.xcitycustomerskb.hazelcastcachefordatabasecall;
 
-import com.things.customer.xcitycustomerskb.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -19,8 +18,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void insertEmployee(Employee employee) {
-        employeeDAO.insertEmployee(employee);
+    public void insertEmployee(Employee employee, Integer id) {
+        employeeDAO.insertEmployee(employee, id);
     }
 
     @Override
@@ -36,8 +35,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void getEmployeeById(String empId) {
-        Employee employee = employeeDAO.getEmployeeById(empId);
+    public Employee getEmployeeById(Integer id) {
+        Employee employee = employeeDAO.getEmployeeById(id);
         System.out.println(employee);
+        return employee;
     }
 }

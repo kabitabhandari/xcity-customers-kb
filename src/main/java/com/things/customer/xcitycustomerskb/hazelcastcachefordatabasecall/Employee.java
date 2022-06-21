@@ -1,4 +1,4 @@
-package com.things.customer.xcitycustomerskb.model;
+package com.things.customer.xcitycustomerskb.hazelcastcachefordatabasecall;
 
 import lombok.Data;
 
