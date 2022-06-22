@@ -20,26 +20,33 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @PostMapping(path = "cache/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "v1/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity postOneEmployeeRecord(@RequestBody Employee employee, @PathVariable Integer id ) {
         employeeService.insertEmployee(employee, id);
-        PostmanFormat yo = new PostmanFormat("Record Inserted in H2 Database", String.valueOf(HttpStatus.CREATED.value()));
+        PostmanFormat yo = new PostmanFormat("One Record Inserted in H2 Database", String.valueOf(HttpStatus.CREATED.value()));
         return new ResponseEntity<>(yo, HttpStatus.valueOf(201));
     }
-    @PostMapping(path = "cache", produces= MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "v1", produces= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity postListOfEmployeeRecords(@RequestBody List<Employee> employee) {
         employeeService.insertEmployees(employee);
-        PostmanFormat yo = new PostmanFormat("Record Inserted in H2 Database", String.valueOf(HttpStatus.CREATED.value()));
+        PostmanFormat yo = new PostmanFormat("List of Records Inserted in H2 Database", String.valueOf(HttpStatus.CREATED.value()));
         return new ResponseEntity<>(yo, HttpStatus.valueOf(201));
     }
 
-    @GetMapping(value = "cache", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "v1", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
-    @GetMapping(value = "cache/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+
+
+    @GetMapping(value = "v1/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Employee getOneEmployee(@PathVariable Integer id ) {
         return employeeService.getEmployeeById(id);
+    }
+
+    @GetMapping(value = "v1/cache", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Employee> getFromCache() {
+        return employeeService.getAllEmployeesFromCache();
     }
 
 }

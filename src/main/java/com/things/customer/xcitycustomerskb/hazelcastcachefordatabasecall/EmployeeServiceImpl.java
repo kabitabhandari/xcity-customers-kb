@@ -28,7 +28,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @Cacheable()
     public List<Employee> getAllEmployees() {
         System.out.println("Database call started...\n");
         return employeeDAO.getAllEmployees();
@@ -39,5 +38,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeDAO.getEmployeeById(id);
         System.out.println(employee);
         return employee;
+    }
+    @Cacheable()
+    @Override
+    public List<Employee> getAllEmployeesFromCache() {
+        return getAllEmployees();
     }
 }

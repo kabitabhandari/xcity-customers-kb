@@ -10,4 +10,5 @@ public interface EmployeeService {
     void insertEmployees(List<Employee> employees);
     List<Employee> getAllEmployees();
     Employee getEmployeeById(Integer id);
+    List<Employee> getAllEmployeesFromCache();
 }
