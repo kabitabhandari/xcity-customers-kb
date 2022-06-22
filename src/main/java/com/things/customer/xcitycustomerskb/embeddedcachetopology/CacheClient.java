@@ -29,10 +29,10 @@ public class CacheClient {
     public Car get(String key){
 
         IMap<String, Car> map = hazelcastInstance.getMap(HAZEL_CAST_CACHE_NAME);
-        if(!map.isEmpty()) {
-            return map.get(key);
+        if(map.size() == 0) {
+            return null;
         }
-        return null;
+        return map.get(key);
     }
 
     public Config createConfig() {

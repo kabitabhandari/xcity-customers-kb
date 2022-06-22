@@ -1,6 +1,8 @@
 package com.things.customer.xcitycustomerskb.embeddedcachetopology;
 
 
+import com.things.customer.xcitycustomerskb.Exception.InvalidException;
+import com.things.customer.xcitycustomerskb.Exception.MapIsEmptyException;
 import com.things.customer.xcitycustomerskb.Exception.PostmanFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,26 +24,33 @@ public class CarController {
         this.cacheClient = cacheClient;
     }
 
-    @PostMapping(path = "cache/{number}", produces= MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity putUsingHazelCastCache(@RequestBody Car car, @PathVariable String number) {
-        cacheClient.put(number, car);
-        PostmanFormat yo = new PostmanFormat("Entry Successful", String.valueOf(HttpStatus.CREATED.value()));
+    @PostMapping(path = "/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity PutCarInfoInCache(@RequestBody Car car, @PathVariable String id) {
+        cacheClient.put(id, car);
+        PostmanFormat yo = new PostmanFormat("Car Info Successfully stored in cache client", String.valueOf(HttpStatus.CREATED.value()));
         return new ResponseEntity<>(yo, HttpStatus.valueOf(201));
     }
 
-    @GetMapping(value = "cache/{number}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Car getUsingHazelCastCache(@PathVariable String number) {
-        return cacheClient.get(number);
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Car RetrieveCarInfoFromCache(@PathVariable String id) {
+
+        Car result =  cacheClient.get(id);
+        if(result == null){
+            throw new MapIsEmptyException("map is empty");
+        }
+        return result;
     }
-    @PostMapping(path = "hmap/{number}", produces= MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity regularPut(@RequestBody Car car, @PathVariable String number) {
-        myMap.put(number, car);
-        PostmanFormat yo = new PostmanFormat("Entry Successful", String.valueOf(HttpStatus.CREATED.value()));
+
+
+    @PostMapping(path = "hmap/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity carInfo(@RequestBody Car car, @PathVariable String id) {
+        myMap.put(id, car);
+        PostmanFormat yo = new PostmanFormat("Entry Successfully stored in user created hash map", String.valueOf(HttpStatus.CREATED.value()));
         return new ResponseEntity<>(yo, HttpStatus.valueOf(201));
     }
 
-    @GetMapping(value = "hmap/{number}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Car regularGet(@PathVariable String number) {
-        return myMap.get(number);
+    @GetMapping(value = "hmap/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Car carInfo(@PathVariable String id) {
+        return myMap.get(id);
     }
 }

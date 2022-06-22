@@ -11,6 +11,7 @@ import org.springframework.web.client.ResourceAccessException;
 @ControllerAdvice
 public class CustomerExceptionHandler {
     private final static String NOT_FOUND_MESSAGE = "Not Found";
+    private final static String MAP_IS_EMPTY_MESSAGE = "Map is empty";
     private final static String INTERNAL_SERVER_MESSAGE = "Unhandled exception in service";
 
     @ExceptionHandler(value = {InvalidException.class})
@@ -26,10 +27,18 @@ public class CustomerExceptionHandler {
         PostmanFormat postmanFormat = new PostmanFormat(INTERNAL_SERVER_MESSAGE, String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
         return new ResponseEntity<>(postmanFormat, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
     @ExceptionHandler(value = {ResourceAccessException.class})
     public final ResponseEntity<PostmanFormat> handleResourceAccessException(Exception ex) {
         log.error("InternalServerException: {} {}", ex.getMessage(), ex);
         PostmanFormat postmanFormat = new PostmanFormat(INTERNAL_SERVER_MESSAGE, String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        return new ResponseEntity<>(postmanFormat, HttpStatus.valueOf(500));
+    }
+
+    @ExceptionHandler(value = {MapIsEmptyException.class})
+    public final ResponseEntity<PostmanFormat> handleMapIsEmptyException(Exception ex) {
+        log.error("MapIsEmptyException: {} {}", ex.getMessage(), ex);
+        PostmanFormat postmanFormat = new PostmanFormat(MAP_IS_EMPTY_MESSAGE, String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
         return new ResponseEntity<>(postmanFormat, HttpStatus.valueOf(500));
     }
 }
