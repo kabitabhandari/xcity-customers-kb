@@ -44,6 +44,9 @@ dependencies {
 	// H2 database
 	runtimeOnly 'com.h2database:h2'
 
+	//Hateos
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+
 
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

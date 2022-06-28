@@ -10,15 +10,15 @@ public class CarSerializer implements StreamSerializer<Car> {
 
     @Override
     public void write(ObjectDataOutput out, Car object) throws IOException {
-        out.writeUTF(object.getName());
-        out.writeUTF(object.getNumber());
+        out.writeString(object.getName());
+        out.writeString(object.getNumber());
     }
 
     @Override
     public Car read(ObjectDataInput in) throws IOException {
         return Car.builder()
-                .name(in.readUTF())
-                .number(in.readUTF())
+                .name(in.readString())
+                .number(in.readString())
                 .build();
     }
 
