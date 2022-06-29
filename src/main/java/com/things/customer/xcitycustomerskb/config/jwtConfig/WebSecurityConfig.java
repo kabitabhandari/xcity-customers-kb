@@ -23,7 +23,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String[] AUTH_WHITELIST = {"/authenticate", "/actuator/health/**", "/actuator/health/**", "/actuator/prometheus/**", "/v2/api-docs"};
+    private static final String[] AUTH_WHITELIST = {"/authenticate", "/actuator/health/**", "/actuator/health/**",
+            "/actuator/prometheus/**", "/v2/api-docs", "/h2-console/**", "/h2/**"};
     @Autowired
     private final JwtRequestFilter jwtRequestFilter;
     @Autowired
@@ -59,6 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 //disable csrf
                 .csrf().disable()
+                .headers().frameOptions().sameOrigin().disable()
                 // dont authenticate this particular request
                 .authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll().
                 // all other requests need to be authenticated

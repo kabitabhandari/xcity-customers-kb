@@ -32,4 +32,9 @@ public class CustomerDetailsService {
         CustomerDetailsResponse response = customerDetailsProvider.displayEachCustomerRecord(customerId, memberChannel);
         return customerDetailsMapper.mapCustomerDetailsFromServiceCallToModel(response);
     }
+
+    public String getDenverSong() {
+        return "country roads, Take me home to the place I belong.\n" +
+                "West Virginia, Mountain momma, take me home, Country roads";
+    }
 }

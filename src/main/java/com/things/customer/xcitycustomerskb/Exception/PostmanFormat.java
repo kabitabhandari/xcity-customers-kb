@@ -1,13 +1,13 @@
 package com.things.customer.xcitycustomerskb.Exception;
 
-public class GeneralErrorFormatForPostman {
+public class PostmanFormat {
     private String message;
     private String code;
 
-    public GeneralErrorFormatForPostman() {
+    public PostmanFormat() {
     }
 
-    public GeneralErrorFormatForPostman(String message, String code) {
+    public PostmanFormat(String message, String code) {
         this.message = message;
         this.code = code;
     }

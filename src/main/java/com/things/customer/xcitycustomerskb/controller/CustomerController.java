@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 public class CustomerController {
+    private static final String GET_SONGS = "v1/songs" ;
     private final String GET_CUSTOMER_DETAILS = "v1/mps/knowing/customers";
     private final String GET_EACH_CUSTOMER_DETAILS = "v1/mps/knowing/customer/{customer-id}/details";
     private final CustomerDetailsService customerDetailsService;
@@ -37,5 +38,10 @@ public class CustomerController {
         }
         CustomerDetails response = customerDetailsService.getEachDetails(customerId, memberChannel);
         return response;
+    }
+
+    @GetMapping(path = GET_SONGS)
+    public String getFavouriteSong() {
+        return customerDetailsService.getDenverSong();
     }
 }
