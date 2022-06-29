@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @Repository
 public class HateosEmployeeDaoImpl extends JdbcDaoSupport implements HateosEmployeeDAO {
@@ -78,17 +79,37 @@ public class HateosEmployeeDaoImpl extends JdbcDaoSupport implements HateosEmplo
                 // for adding self link.
                 Link selfLink = WebMvcLinkBuilder.linkTo(HateosEmployee.class).slash("hateos").slash("v1").slash(id).withSelfRel();
                 emp.add(selfLink);
-                if(cache.getFromCache(String.valueOf(id)) != null){ // value present in cache
-                    JobDetail jobDetail = new JobDetail(id, JobDetail.JobState.COMPLETED.name());
-                    emp.setStatus(jobDetail);
-                    return emp;
-                }
-                else{
+                try {
+                    /**
+                     * Simple logic where we will check if there is value in cache or not. If not we throw null pointer
+                     * exception and failed status. If value in cache is string "processing" then we throw processing or
+                     * completed depending upon the random number if condition.
+                     */
+                    Random rand = new Random();
+                    // Generate random integers in range 0 to 9
+                    int random = rand.nextInt(10);
+                    if(random <5){
+                        JobDetail cachedResult = cache.getFromCache(String.valueOf(id));
+                        if (cachedResult.getState() != null && cachedResult.getState().equals("PROCESSING")) { // value present in cache from line
+                            JobDetail jobDetail = new JobDetail(id, JobDetail.JobState.PROCESSING.name());
+                            emp.setStatus(jobDetail);
+                            return emp;
+                        }
+                    }else{
+                        JobDetail cachedResult = cache.getFromCache(String.valueOf(id));
+                        if (cachedResult.getState() != null && cachedResult.getState().equals("PROCESSING")) { // value present in cache from line
+                            JobDetail jobDetail = new JobDetail(id, JobDetail.JobState.COMPLETED.name());
+                            emp.setStatus(jobDetail);
+                            return emp;
+                        }
+                    }
+                } catch(NullPointerException ex){
                     HateosEmployee empe =new HateosEmployee();
                     JobDetail jobDetail = new JobDetail(id, JobDetail.JobState.FAILED.name());
                     empe.setStatus(jobDetail);
                     return empe;
                 }
+                return null;
 
             }
         });
@@ -103,14 +124,6 @@ public class HateosEmployeeDaoImpl extends JdbcDaoSupport implements HateosEmplo
         cache.putToCache(String.valueOf(id),jobDetail);
         System.out.println("getting value from hateos cache: " + cache.getFromCache(String.valueOf(id)));
         return jobDetail;
-
-        /**
-         * put job details in cache as Processing...
-         * If processing took longer than 10 sec then failed else completed
-         *
-         */
-
-
     }
 
 }
