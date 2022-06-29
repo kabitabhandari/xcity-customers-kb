@@ -90,14 +90,14 @@ public class HateosEmployeeDaoImpl extends JdbcDaoSupport implements HateosEmplo
                     int random = rand.nextInt(10);
                     if(random <5){
                         JobDetail cachedResult = cache.getFromCache(String.valueOf(id));
-                        if (cachedResult.getState() != null && cachedResult.getState().equals("PROCESSING")) { // value present in cache from line
+                        if (cachedResult.getState() != null && cachedResult.getState().equals("PROCESSING")) { // value present in cache from line 120
                             JobDetail jobDetail = new JobDetail(id, JobDetail.JobState.PROCESSING.name());
                             emp.setStatus(jobDetail);
                             return emp;
                         }
                     }else{
                         JobDetail cachedResult = cache.getFromCache(String.valueOf(id));
-                        if (cachedResult.getState() != null && cachedResult.getState().equals("PROCESSING")) { // value present in cache from line
+                        if (cachedResult.getState() != null && cachedResult.getState().equals("PROCESSING")) { // value present in cache from line 120
                             JobDetail jobDetail = new JobDetail(id, JobDetail.JobState.COMPLETED.name());
                             emp.setStatus(jobDetail);
                             return emp;
