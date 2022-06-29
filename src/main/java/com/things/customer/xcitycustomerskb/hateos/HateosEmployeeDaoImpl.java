@@ -19,10 +19,13 @@ import java.util.Map;
 public class HateosEmployeeDaoImpl extends JdbcDaoSupport implements HateosEmployeeDAO {
 
     private final DataSource dataSource;
+    private final CacheClientForJobDetails cache;
+
 
     @Autowired
-    public HateosEmployeeDaoImpl(DataSource dataSource) {
+    public HateosEmployeeDaoImpl(DataSource dataSource, CacheClientForJobDetails cache) {
         this.dataSource = dataSource;
+        this.cache = cache;
     }
 
     @PostConstruct
@@ -75,7 +78,7 @@ public class HateosEmployeeDaoImpl extends JdbcDaoSupport implements HateosEmplo
                 // for adding self link.
                 Link selfLink = WebMvcLinkBuilder.linkTo(HateosEmployee.class).slash("hateos").slash("v1").slash(id).withSelfRel();
                 emp.add(selfLink);
-                if(true){ // value present in cache
+                if(cache.getFromCache(String.valueOf(id)) != null){ // value present in cache
                     JobDetail jobDetail = new JobDetail(id, JobDetail.JobState.COMPLETED.name());
                     emp.setStatus(jobDetail);
                     return emp;
@@ -97,6 +100,8 @@ public class HateosEmployeeDaoImpl extends JdbcDaoSupport implements HateosEmplo
         // for adding self link.
         Link selfLink = WebMvcLinkBuilder.linkTo(JobDetail.class).slash("hateos").slash("v1").slash(id).withSelfRel();
         jobDetail.add(selfLink);
+        cache.putToCache(String.valueOf(id),jobDetail);
+        System.out.println("getting value from hateos cache: " + cache.getFromCache(String.valueOf(id)));
         return jobDetail;
 
         /**
