@@ -39,13 +39,13 @@ public class FutureController {
 
     public List<CustomerDetailsResponse> getAllDetailsResponse(String memberChannel) throws ExecutionException, InterruptedException {
         //completable future
-        CompletableFuture<List<CustomerDetailsResponse>> customerDetailResponseList = asyncService.getAllDetails(memberChannel);
+        CompletableFuture<List<CustomerDetailsResponse>> completableFutureList = asyncService.getAllDetails(memberChannel);
         System.out.println("hi");
         System.out.println("hi");
         System.out.println("hi");
 
         //joining all futures when async service is complete
-        CompletableFuture.allOf(customerDetailResponseList).join();
+        CompletableFuture.allOf(completableFutureList).join();
         System.out.println("hello");
         System.out.println("hello");
         System.out.println("hello");
@@ -53,7 +53,7 @@ public class FutureController {
 
 
         //Use get() method to get all the lists from completable future
-        List<CustomerDetailsResponse> resultList = customerDetailResponseList.get();
+        List<CustomerDetailsResponse> resultList = completableFutureList.get();
         return resultList;
     }
 
