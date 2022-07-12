@@ -30,3 +30,8 @@ spring:
       token: hvs.7s5Rl3GOqPrGQ1tmDMBCfCrz
 
 
+
+max_retry_attempts_to_call_pega: 32
+
+tree:
+  retry: 3

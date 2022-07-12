@@ -5,18 +5,29 @@ import com.things.customer.xcitycustomerskb.model.CustomerDetails;
 import com.things.customer.xcitycustomerskb.provider.CustomerDetailsProvider;
 import com.things.customer.xcitycustomerskb.responsemodel.CustomerDetailsResponse;
 import com.things.customer.xcitycustomerskb.util.Constants;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class CustomerDetailsService {
+
+    @Value("${max_retry_attempts_to_call_pega}")  // @value could be put in constructor to look clean
+    private   Integer max_retry_2;
+
     private final CustomerDetailsProvider customerDetailsProvider;
     private final CustomerDetailsMapper customerDetailsMapper;
+    private  int max_retry;
 
-    public CustomerDetailsService(CustomerDetailsProvider customerDetailsProvider, CustomerDetailsMapper customerDetailsMapper) {
+    public CustomerDetailsService(
+            CustomerDetailsProvider customerDetailsProvider,
+            CustomerDetailsMapper customerDetailsMapper,
+            @Value("${max_retry_attempts_to_call_pega}") int a1) {
         this.customerDetailsProvider = customerDetailsProvider;
         this.customerDetailsMapper = customerDetailsMapper;
+        this.max_retry = a1;
+
     }
 
     public List<CustomerDetails> getAllDetails(String memberChannel) {
@@ -34,6 +45,8 @@ public class CustomerDetailsService {
     }
 
     public String getDenverSong() {
+        System.out.println("MAX_RETRY_ATTEMPTS  " + max_retry);
+        System.out.println("MAX_RETRY_ATTEMPTS2  " + max_retry_2);
         return "country roads, Take me home to the place I belong.\n" +
                 "West Virginia, Mountain momma, take me home, Country roads";
     }
