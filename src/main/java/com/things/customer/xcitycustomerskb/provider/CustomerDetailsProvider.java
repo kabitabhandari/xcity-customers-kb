@@ -3,13 +3,13 @@ package com.things.customer.xcitycustomerskb.provider;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.things.customer.xcitycustomerskb.Exception.InternalServerException;
+import com.things.customer.xcitycustomerskb.config.RestTemplateConfig;
 import com.things.customer.xcitycustomerskb.model.ModelForCustomerCareUnit;
 import com.things.customer.xcitycustomerskb.responsemodel.CustomerDetailsResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -24,11 +24,11 @@ public class CustomerDetailsProvider {
     private static final String GET_EACH_CUSTOMERS_CONTEXT = "/cust/";
     private static final String DETAILS = "/details";
     private final String MOCK_BASE_URL;
-    private final RestTemplate restTemplate;
+    private final RestTemplateConfig restTemplate;
 
     public CustomerDetailsProvider(
             @Value("${mockserver_base_url}") String MockserverBaseUrl,
-            RestTemplate restTemplate) {
+            RestTemplateConfig restTemplate) {
         this.MOCK_BASE_URL = MockserverBaseUrl;
         this.restTemplate = restTemplate;
     }
@@ -50,7 +50,7 @@ public class CustomerDetailsProvider {
         HttpEntity<String> requestEntity = new HttpEntity<>("parameters", headers);
 
         ResponseEntity<CustomerDetailsResponse[]> response =
-                restTemplate.exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse[].class);
+                restTemplate.myRestTemplate().exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse[].class);
         log.info("Successfully Invoked Mock Server");
 
         if (response.getStatusCode() != HttpStatus.OK) {
@@ -133,7 +133,7 @@ public class CustomerDetailsProvider {
         HttpEntity<String> requestEntity = new HttpEntity<>("parameters", headers);
 
         ResponseEntity<CustomerDetailsResponse> response =
-                restTemplate.exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse.class);
+                restTemplate.myRestTemplate().exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse.class);
         log.info("Successfully Invoked Mock Server");
 
         if (response.getStatusCode() != HttpStatus.OK) {
