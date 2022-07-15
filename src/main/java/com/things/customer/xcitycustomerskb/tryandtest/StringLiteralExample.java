@@ -1,4 +1,4 @@
-package com.things.customer.xcitycustomerskb.simpletry;
+package com.things.customer.xcitycustomerskb.tryandtest;
 
 public class StringLiteralExample {
     public static void main(String... args) {

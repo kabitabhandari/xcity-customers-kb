@@ -7,12 +7,16 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.ResourceAccessException;
 
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+
 @Slf4j
 @ControllerAdvice
 public class CustomerExceptionHandler {
     private final static String NOT_FOUND_MESSAGE = "Not Found";
     private final static String MAP_IS_EMPTY_MESSAGE = "Map is empty";
-    private final static String INTERNAL_SERVER_MESSAGE = "Unhandled exception in service";
+    private final static String INTERNAL_SERVER_MESSAGE = "Unhandled exception in service123";
+    private final static String TIMEOUT_MESSAGE= "Timeout in service call";
 
     @ExceptionHandler(value = {InvalidException.class})
     public final ResponseEntity<PostmanFormat> handleInvalidException(Exception ex) {
@@ -31,7 +35,7 @@ public class CustomerExceptionHandler {
     @ExceptionHandler(value = {ResourceAccessException.class})
     public final ResponseEntity<PostmanFormat> handleResourceAccessException(Exception ex) {
         log.error("InternalServerException: {} {}", ex.getMessage(), ex);
-        PostmanFormat postmanFormat = new PostmanFormat(INTERNAL_SERVER_MESSAGE, String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        PostmanFormat postmanFormat = new PostmanFormat(TIMEOUT_MESSAGE, String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
         return new ResponseEntity<>(postmanFormat, HttpStatus.valueOf(500));
     }
 

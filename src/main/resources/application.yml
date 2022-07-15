@@ -32,6 +32,12 @@ spring:
 
 
 max_retry_attempts_to_call_pega: 32
+a: 12
+b: 8
 
 tree:
   retry: 3
+
+
+downstream-services:
+  timeout: 5

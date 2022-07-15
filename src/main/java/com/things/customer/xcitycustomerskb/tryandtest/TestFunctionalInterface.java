@@ -1,4 +1,4 @@
-package com.things.customer.xcitycustomerskb.simpletry;
+package com.things.customer.xcitycustomerskb.tryandtest;
 public class TestFunctionalInterface {
     public static void main(String... args) {
         //implementing any interface that is not a functional interface:
