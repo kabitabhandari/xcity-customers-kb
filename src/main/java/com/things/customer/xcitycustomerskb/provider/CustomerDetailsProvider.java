@@ -98,7 +98,7 @@ public class CustomerDetailsProvider {
         ResponseEntity<NewCustomerDetails> response =
                 restTemplate.myRestTemplate(new RestTemplateBuilder()).postForEntity(url, requestEntity,  NewCustomerDetails.class);
         return response;
-        //TODO: make api timeout after 6s
+
 
     }
 
