@@ -1,4 +1,4 @@
-package com.things.customer.xcitycustomerskb.comparator;
+package com.things.customer.xcitycustomerskb.sortusingcomparator;
 
 import org.springframework.stereotype.Service;
 

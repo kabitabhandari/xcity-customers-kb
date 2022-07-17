@@ -1,4 +1,4 @@
-package com.things.customer.xcitycustomerskb.comparable;
+package com.things.customer.xcitycustomerskb.sortusingcomparable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

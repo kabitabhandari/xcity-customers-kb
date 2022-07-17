@@ -1,4 +1,4 @@
-package com.things.customer.xcitycustomerskb.comparable;
+package com.things.customer.xcitycustomerskb.sortusingcomparable;
 
 import java.util.ArrayList;
 import java.util.List;

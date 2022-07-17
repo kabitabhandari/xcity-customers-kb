@@ -1,7 +1,5 @@
-package com.things.customer.xcitycustomerskb.comparator;
+package com.things.customer.xcitycustomerskb.sortusingcomparator;
 
-import com.things.customer.xcitycustomerskb.comparable.Car;
-import com.things.customer.xcitycustomerskb.comparable.CarListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
