@@ -17,7 +17,7 @@ public class CarListService2 {
 
     public List<Car2> sortingCars2Approach1() {
         List<Car2> rawList = CarHashMap2.listOfCars2();
-        System.out.println("rawlist before sort using comparator  " + rawList);
+        System.out.println("rawlist before sort (using comparator)  " + rawList);
 
         Collections.sort(rawList, new Comparator<Car2>() {  // .sort will take second paramater as lamda
             @Override
@@ -36,7 +36,7 @@ public class CarListService2 {
 
     public List<Car2> sortingCars2Approach2(){
         List<Car2> rawList2 = CarHashMap2.listOfCars2();
-        System.out.println("rawlist before sort using comparator  " + rawList2);
+        System.out.println("rawlist before sort (using comparator)  " + rawList2);
 
         Collections.sort(rawList2, new Comparator<Car2>() {
             @Override
@@ -46,7 +46,7 @@ public class CarListService2 {
 
         });
 
-        System.out.println("rawlist after sort using comparator   " + rawList2);
+        System.out.println("rawlist after sort (using comparator)   " + rawList2);
 
         return rawList2;
     }

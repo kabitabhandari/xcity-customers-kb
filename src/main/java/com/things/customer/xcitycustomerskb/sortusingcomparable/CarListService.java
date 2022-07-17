@@ -18,10 +18,10 @@ public class CarListService{
         // Make sure Car class is already implementing Comparable Interface otherwise you get an error while using  Collections.sort(rawList) in line below.
         List<Car> rawList = CarHashMap.listOfCars();
 
-        System.out.println("rawlist before sort using comparable  " + rawList);
+        System.out.println("rawlist before sort (using comparable)  " + rawList);
 
         Collections.sort(rawList);
-        System.out.println("rawlist after sort  using comparable " + rawList);
+        System.out.println("rawlist after sort  (using comparable) " + rawList);
 
 
 
@@ -34,7 +34,7 @@ public class CarListService{
         randomInteger.add(23);
 
         Collections.sort(randomInteger);
-        System.out.println("randomInteger after sorting are :: " + randomInteger);
+        System.out.println("randomInteger after (sorting are)  " + randomInteger);
 
 
 

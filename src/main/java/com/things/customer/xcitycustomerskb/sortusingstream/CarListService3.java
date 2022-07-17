@@ -18,7 +18,7 @@ public class CarListService3 {
 
     public List<Car2> sortingCars3() {
         List<Car2> rawList = CarHashMap2.listOfCars2();
-        System.out.println("rawlist before sort using stream " + rawList);
+        System.out.println("rawlist before sort (using stream) " + rawList);
         List<Car2> sortedList =  rawList.stream().sorted(   // stream() takes lamda of Comparator
                 new Comparator<Car2>() {
                     @Override
@@ -34,7 +34,7 @@ public class CarListService3 {
         ).collect(Collectors.toList());
 
 
-        System.out.println("rawlist after sort using stream " + sortedList);
+        System.out.println("rawlist after sort (using stream) " + sortedList);
         return sortedList;
     }
 }
