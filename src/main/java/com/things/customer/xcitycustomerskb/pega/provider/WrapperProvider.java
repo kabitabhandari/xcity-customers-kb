@@ -50,7 +50,7 @@ public class WrapperProvider {
         List<PegaResponse> response = Arrays.asList(responseEntity.getBody());
 
 
-        //map PegaResponse to Interaction
+        //map PegaResponse to Wrapper
         WrapperResponse wrapperResponse = mapToInteraction(response);
 
         return wrapperResponse;
