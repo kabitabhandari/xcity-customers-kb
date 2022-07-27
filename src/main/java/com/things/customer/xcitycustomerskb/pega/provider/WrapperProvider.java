@@ -47,7 +47,7 @@ public class WrapperProvider {
         ResponseEntity<PegaResponse> responseEntity = postCallPega(pegaRequestBody);
 
         // convert response entity to List<PegaResponse>
-        List<PegaResponse> response =  Arrays.asList(responseEntity.getBody());
+        List<PegaResponse> response = Arrays.asList(responseEntity.getBody());
 
 
         //map PegaResponse to Interaction
@@ -59,40 +59,37 @@ public class WrapperProvider {
 
     /**
      * POST call Pega and get response
+     *
      * @param pegaRequestBody
      * @return ResponseEntity<PegaResponse>
      */
-    public ResponseEntity<PegaResponse>postCallPega(PegaRequest pegaRequestBody) {
-        String url ="http://localhost:8089/pega" ;
+    public ResponseEntity<PegaResponse> postCallPega(PegaRequest pegaRequestBody) {
+        String url = "http://localhost:8089/pega";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<PegaRequest> requestEntity = new HttpEntity<>(pegaRequestBody, headers);
         ResponseEntity<PegaResponse> response =
-                restTemplate.myRestTemplate(new RestTemplateBuilder()).postForEntity(url, requestEntity,  PegaResponse.class);
+                restTemplate.myRestTemplate(new RestTemplateBuilder()).postForEntity(url, requestEntity, PegaResponse.class);
         return response;
     }
 
     /**
      * Map Pega response to Wrapper response
+     *
      * @param incomingObject
      * @return WrapperResponse
      */
     public WrapperResponse mapToInteraction(List<PegaResponse> incomingObject) {  //incomingObject comes as a list [...]
-        try{
-            if(incomingObject != null){
-                for(PegaResponse eachIncomingResponse : incomingObject){
-                    WrapperResponse outgoingObject = new WrapperResponse();
+        try {
+            WrapperResponse outgoingObject = new WrapperResponse();
+            if (incomingObject != null) {
+                for (PegaResponse eachIncomingResponse : incomingObject) {
 
                     // each item from incoming object..
-                    if(eachIncomingResponse.getStatus().equals("OK") && eachIncomingResponse.getMovies() != null){
-                        for(Movie eachMovie : eachIncomingResponse.getMovies()){
-
-                            List<ShortlistedMovie> shortlistedMovieArrayList = new ArrayList<>();
-
-                            if(eachMovie.getStatus().equals("OK")){
-
-                                for(Detail eachDetails : eachMovie.getDetails()){
-
-
+                    if (eachIncomingResponse.getStatus().equals("OK") && eachIncomingResponse.getMovies() != null) {
+                        List<ShortlistedMovie> shortlistedMovieArrayList = new ArrayList<>();
+                        for (Movie eachMovie : eachIncomingResponse.getMovies()) {
+                            if (eachMovie.getStatus().equals("OK")) {
+                                for (Detail eachDetails : eachMovie.getDetails()) {
                                     PictureInfo pictureInfo = new PictureInfo();
                                     pictureInfo.setMovieName(eachDetails.getPictureName());
                                     pictureInfo.setPlotGlance(eachDetails.getPlot());
@@ -101,14 +98,13 @@ public class WrapperProvider {
                                     List<PictureInfo> pictureInfoList = new ArrayList<>();
                                     pictureInfoList.add(pictureInfo);
 
-
                                     ShortlistedMovie shortlistedMovie = new ShortlistedMovie();
                                     shortlistedMovie.setPictureInfos(pictureInfoList);
 
                                     shortlistedMovie.setBanner(eachMovie.getIndustryName());
                                     shortlistedMovieArrayList.add(shortlistedMovie);
 
-                                    for(GnaPega eachGenresAndActor : eachDetails.getGenreNActors()){
+                                    for (GnaPega eachGenresAndActor : eachDetails.getGenreNActors()) {
                                         outgoingObject.setBoxOfficeID(eachDetails.getBoxOfficeID());
 
                                         List<Artist> artistList = new ArrayList<>();
@@ -134,31 +130,25 @@ public class WrapperProvider {
 
                                         pictureInfo.setGenreNActors(gnAList);
                                     }
-
+                                    outgoingObject.setShortlistedMovies(shortlistedMovieArrayList);
                                 }
-                                outgoingObject.setShortlistedMovies(shortlistedMovieArrayList);
-
-
-                                System.out.println(outgoingObject);
                             }
                         }
                         return outgoingObject;
                     }
-
                 }
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             throw new GeneralException(ex);
         }
         return null;
-
     }
 
     public PegaRequest getPegaRequest(WrapperRequest incomingObject) {
         PegaRequest outgoingObject = new PegaRequest();
-        if(incomingObject.getName() != null && incomingObject.getName().isEmpty()){
+        if (incomingObject.getName() != null && incomingObject.getName().isEmpty()) {
             outgoingObject.setName(incomingObject.getName());
-        }else{
+        } else {
             outgoingObject.setName("Best-Movies"); //Hardcoding
         }
         outgoingObject.setMovieBoard("WorldWide");
@@ -184,16 +174,16 @@ public class WrapperProvider {
 
     private void validateWrapperRequest(WrapperRequest cir) {
         List<String> resultList = new ArrayList<>();
-        if(cir.getMovieID() == null || cir.getMovieID().isEmpty()){
+        if (cir.getMovieID() == null || cir.getMovieID().isEmpty()) {
             resultList.add("pageId cannot be null or blank ");
         }
-        if(cir.getChannel() == null || cir.getChannel().isEmpty()){
+        if (cir.getChannel() == null || cir.getChannel().isEmpty()) {
             resultList.add("channel cannot be null or blank ");
         }
-        if(cir.getShortMovieID() == null || cir.getShortMovieID().isEmpty()){
+        if (cir.getShortMovieID() == null || cir.getShortMovieID().isEmpty()) {
             resultList.add("shortPageId cannot be null or blank ");
         }
-        if(cir.getZoneIDs() == null || cir.getZoneIDs().isEmpty()){
+        if (cir.getZoneIDs() == null || cir.getZoneIDs().isEmpty()) {
             resultList.add("zoneId cannot be null or blank");
         }
 //        String formattedString = resultList.toString()
@@ -208,18 +198,16 @@ public class WrapperProvider {
             builder.append(value);
         }
         String formattedString = builder.toString();
-        if(!resultList.isEmpty()){
-           throw new GeneralException(formattedString);
-       }
+        if (!resultList.isEmpty()) {
+            throw new GeneralException(formattedString);
+        }
     }
 
 
     private String translateToGeneratedId(String partyGuid) {
         //remove all numbers:
-        return partyGuid.replaceAll("\\d","");
+        return partyGuid.replaceAll("\\d", "");
     }
-
-
 
 
 }
