@@ -36,7 +36,7 @@ public class WrapperProvider {
         //validate request
         validateWrapperRequest(wrapperRequest);
 
-        //set xdcId
+        //set generatedId
         String generatedID = translateToGeneratedId(wrapperRequest.getShortListedMovieGUID());
         wrapperRequest.setGeneratedID(generatedID);
 
@@ -175,13 +175,13 @@ public class WrapperProvider {
     private void validateWrapperRequest(WrapperRequest cir) {
         List<String> resultList = new ArrayList<>();
         if (cir.getMovieID() == null || cir.getMovieID().isEmpty()) {
-            resultList.add("pageId cannot be null or blank ");
+            resultList.add("movieID cannot be null or blank ");
         }
         if (cir.getChannel() == null || cir.getChannel().isEmpty()) {
             resultList.add("channel cannot be null or blank ");
         }
         if (cir.getShortMovieID() == null || cir.getShortMovieID().isEmpty()) {
-            resultList.add("shortPageId cannot be null or blank ");
+            resultList.add("shortMovieId cannot be null or blank ");
         }
         if (cir.getZoneIDs() == null || cir.getZoneIDs().isEmpty()) {
             resultList.add("zoneId cannot be null or blank");
