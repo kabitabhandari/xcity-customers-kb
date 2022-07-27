@@ -45,7 +45,7 @@ public class CustomerController {
      */
     @GetMapping(path = GET_EACH_CUSTOMER_DETAILS)
     public CustomerDetails getEachCustomer(@RequestHeader(value = "channel") String memberChannel,
-                                           @PathVariable("customer-id") String customerId) {
+                                           @PathVariable("id") String customerId) {
         if (!customerDetailsService.isValidMemberChannel(memberChannel)) {
             throw new InvalidException("Member Channel is invalid");
         }

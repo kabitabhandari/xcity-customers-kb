@@ -159,8 +159,9 @@ public class CustomerDetailsProvider {
     private void serializeResponseForWireProcess(ResponseEntity<CustomerDetailsResponse[]> response) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
+            System.out.println("objectmapper = "+ objectMapper);
             String d = objectMapper.writeValueAsString(response.getBody());
-            //System.out.println("json of response object >>> " + d);
+            System.out.println("json of response object >>> " + d);
         } catch (JsonProcessingException e) {
             e.getMessage();
         }

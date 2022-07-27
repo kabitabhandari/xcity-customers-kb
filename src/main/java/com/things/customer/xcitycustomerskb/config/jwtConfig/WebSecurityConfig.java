@@ -24,7 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] AUTH_WHITELIST = {"/authenticate", "/actuator/health/**", "/actuator/health/**",
-            "/actuator/prometheus/**", "/v2/api-docs", "/h2-console/**", "/h2/**"};
+            "/actuator/prometheus/**", "/v2/api-docs", "/h2-console/**", "/h2/**", "/free/**"};
     @Autowired
     private final JwtRequestFilter jwtRequestFilter;
     @Autowired

@@ -47,6 +47,8 @@ dependencies {
 	//Hateos
 	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 
+	// javax.validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

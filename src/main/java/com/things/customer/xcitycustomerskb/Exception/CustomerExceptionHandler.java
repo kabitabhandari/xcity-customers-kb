@@ -3,6 +3,7 @@ package com.things.customer.xcitycustomerskb.Exception;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.ResourceAccessException;
@@ -45,4 +46,12 @@ public class CustomerExceptionHandler {
         PostmanFormat postmanFormat = new PostmanFormat(MAP_IS_EMPTY_MESSAGE, String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
         return new ResponseEntity<>(postmanFormat, HttpStatus.valueOf(500));
     }
+    @ExceptionHandler(value = {GeneralException.class})
+    public final ResponseEntity<PostmanFormat> handleGeneralException(GeneralException ex) {
+        Integer status = ex.getStatus();
+        log.error("GeneralException: {} {}", ex.getMessage(), ex);
+        PostmanFormat postmanFormat = new PostmanFormat(ex.getMessage(), status.toString());
+        return new ResponseEntity<>(postmanFormat, HttpStatus.valueOf(400));
+    }
+
 }

@@ -1,0 +1,517 @@
+[
+  {
+    "Status": "OK",
+    "Movies": [
+      {
+        "Status": "OK",
+        "IndustryName": "Hollywood",
+        "Details": [
+          {
+            "MovieName": "The Cotton Club",
+            "Year": "1984",
+            "BoxOfficeID": "6666",
+            "ZoneID": "AllZones",
+            "Director": "Francis Ford Coppola",
+            "GenresAndActorList": [
+              {
+                "Genres": [
+                  "Comedy",
+                  "Fantasy"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Richard Gere",
+                    "FemaleLeadActor": "Gregory Hines",
+                    "Rating": 4
+                  },
+                  {
+                    "FemaleLeadActor": "Rosa Steve",
+                    "MaleLeadActor": "Sally Cook",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Nora Jains",
+                    "FemaleLeadActor": "Terry Gross",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Crime",
+                  "Music"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Dave Gere",
+                    "FemaleLeadActor": "Hillary Lone",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Jhon Stella",
+                    "FemaleLeadActor": "Sally Cook",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Sophia Jose",
+                    "FemaleLeadActor": "Ink Ted",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Mystery",
+                  "Western"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Bob Minions",
+                    "FemaleLeadActor": "Wilson Temp",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Cuddy Sky",
+                    "FemaleLeadActor": "Cameron Jeff",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Amber Red",
+                    "FemaleLeadActor": "Austin Dorm",
+                    "Rating": 3
+                  }
+                ]
+              }
+            ],
+            "Direction": "Inbound, asd, asd",
+            "plot": "A couple of recently deceased ghosts contract the services of a \\\"bio-exorcist\\\" in order to remove the obnoxious new owners of their house.",
+            "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg",
+            "TestID": "102",
+            "Channel": "Mobile"
+          },
+          {
+            "MovieName": "Beetlejuice",
+            "Year": "1988",
+            "BoxOfficeID": "1111",
+            "ZoneID": "WesternZones",
+            "Director": "Frank Darabont",
+            "GenresAndActorList": [
+              {
+                "Genres": [
+                  "Comedy",
+                  "Fantasy"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Richard Gere",
+                    "FemaleLeadActor": "Gregory Hines",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Rosa Steve",
+                    "FemaleLeadActor": "Sally Cook",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Nora Jains",
+                    "FemaleLeadActor": "Terry Gross",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Crime",
+                  "Music"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Dave Gere",
+                    "FemaleLeadActor": "Hillary Lone",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Jhon Stella",
+                    "FemaleLeadActor": "Sally Cook",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Sophia Jose",
+                    "FemaleLeadActor": "Ink Ted",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Mystery",
+                  "Western"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Bob Minions",
+                    "FemaleLeadActor": "Wilson Temp",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Cuddy Sky",
+                    "FemaleLeadActor": "Cameron Jeff",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Amber Red",
+                    "FemaleLeadActor": "Austin Dorm",
+                    "Rating": 3
+                  }
+                ]
+              }
+            ],
+            "Direction": "Inbound",
+            "plot": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+            "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_SX300.jpg",
+            "TestID": "178",
+            "Channel": "Web"
+          }
+        ]
+      },
+      {
+        "Status": "OK",
+        "IndustryName": "Bollywood",
+        "Details": [
+          {
+            "MovieName": "Two States",
+            "Year": "2008",
+            "BoxOfficeID": "2222",
+            "ZoneID": "AllZones",
+            "Director": "Karan Johar",
+            "GenresAndActorList": [
+              {
+                "Genres": [
+                  "Family",
+                  "Drama"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Gopal Sen",
+                    "FemaleLeadActor": "Gauri Sen",
+                    "Rating": 2
+                  },
+                  {
+                    "MaleLeadActor": "Rani Sharma",
+                    "FemaleLeadActor": "Naina Sharma",
+                    "Rating": 3
+                  },
+                  {
+                    "MaleLeadActor": "Dilip Rampal",
+                    "FemaleLeadActor": "Dikshya Bhat",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Crime",
+                  "Music"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Naresh Himal",
+                    "FemaleLeadActor": "Pradeep Sharma",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Reshma Yadav",
+                    "FemaleLeadActor": "Kajol Devgan",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Sophia Sharma",
+                    "FemaleLeadActor": "Dilu Rai",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Mystery",
+                  "Western"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Dinesh Mall",
+                    "FemaleLeadActor": "Dipesh Shetty",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Mina Ji",
+                    "FemaleLeadActor": "Simron Nani",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Dolly Red",
+                    "FemaleLeadActor": "Sony Kapoor",
+                    "Rating": 3
+                  }
+                ]
+              }
+            ],
+            "Direction": "Inbound",
+            "plot": "A couple of recently deceased ghosts contract the services of a \\\"bio-exorcist\\\" in order to remove the obnoxious new owners of their house.",
+            "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg",
+            "TestID": "102",
+            "Channel": "Mobile"
+          },
+          {
+            "MovieName": "Deewana",
+            "Year": "1984",
+            "BoxOfficeID": "3333",
+            "ZoneID": "AllZones",
+            "Director": "Francis Ford Coppola",
+            "GenresAndActorList": [
+              {
+                "Genres": [
+                  "Comedy",
+                  "Fantasy"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Richard Gere",
+                    "FemaleLeadActor": "Gregory Hines",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Rosa Steve",
+                    "FemaleLeadActor": "Sally Cook",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Nora Jains",
+                    "FemaleLeadActor": "Terry Gross",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Crime",
+                  "Music"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Dave Gere",
+                    "FemaleLeadActor": "Hillary Lone",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Jhon Stella",
+                    "FemaleLeadActor": "Sally Cook",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Sophia Jose",
+                    "FemaleLeadActor": "Ink Ted",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Mystery",
+                  "Western"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Bob Minions",
+                    "FemaleLeadActor": "Wilson Temp",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Cuddy Sky",
+                    "FemaleLeadActor": "Cameron Jeff",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Amber Red",
+                    "FemaleLeadActor": "Austin Dorm",
+                    "Rating": 3
+                  }
+                ]
+              }
+            ],
+            "Direction": "Inbound",
+            "plot": "A couple of recently deceased ghosts contract the services of a \\\"bio-exorcist\\\" in order to remove the obnoxious new owners of their house.",
+            "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg",
+            "TestID": "102",
+            "Channel": "Mobile"
+          },
+          {
+            "MovieName": "Judwa",
+            "Year": "1984",
+            "BoxOfficeID": "4444",
+            "ZoneID": "AllZones",
+            "Director": "Francis Ford Coppola",
+            "GenresAndActorList": [
+              {
+                "Genres": [
+                  "Comedy",
+                  "Fantasy"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Richard Gere",
+                    "FemaleLeadActor": "Gregory Hines",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Rosa Steve",
+                    "FemaleLeadActor": "Sally Cook",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Nora Jains",
+                    "FemaleLeadActor": "Terry Gross",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Crime",
+                  "Music"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Dave Gere",
+                    "FemaleLeadActor": "Hillary Lone",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Jhon Stella",
+                    "FemaleLeadActor": "Sally Cook",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Sophia Jose",
+                    "FemaleLeadActor": "Ink Ted",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Mystery",
+                  "Western"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Bob Minions",
+                    "FemaleLeadActor": "Wilson Temp",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Cuddy Sky",
+                    "FemaleLeadActor": "Cameron Jeff",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Amber Red",
+                    "FemaleLeadActor": "Austin Dorm",
+                    "Rating": 3
+                  }
+                ]
+              }
+            ],
+            "Direction": "Inbound",
+            "plot": "A couple of recently deceased ghosts contract the services of a \\\"bio-exorcist\\\" in order to remove the obnoxious new owners of their house.",
+            "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg",
+            "TestID": "102",
+            "Channel": "Mobile"
+          },
+          {
+            "MovieName": "Talaash",
+            "Year": "1984",
+            "BoxOfficeID": "5555",
+            "ZoneID": "AllZones",
+            "Director": "Francis Ford Coppola",
+            "GenresAndActorList": [
+              {
+                "Genres": [
+                  "Comedy",
+                  "Fantasy"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Richard Gere",
+                    "FemaleLeadActor": "Gregory Hines",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Rosa Steve",
+                    "FemaleLeadActor": "Sally Cook",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Nora Jains",
+                    "FemaleLeadActor": "Terry Gross",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Crime",
+                  "Music"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Dave Gere",
+                    "FemaleLeadActor": "Hillary Lone",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Jhon Stella",
+                    "FemaleLeadActor": "Sally Cook",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Sophia Jose",
+                    "FemaleLeadActor": "Ink Ted",
+                    "Rating": 3
+                  }
+                ]
+              },
+              {
+                "Genres": [
+                  "Mystery",
+                  "Western"
+                ],
+                "Actors": [
+                  {
+                    "MaleLeadActor": "Bob Minions",
+                    "FemaleLeadActor": "Wilson Temp",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Cuddy Sky",
+                    "FemaleLeadActor": "Cameron Jeff",
+                    "Rating": 4
+                  },
+                  {
+                    "MaleLeadActor": "Amber Red",
+                    "FemaleLeadActor": "Austin Dorm",
+                    "Rating": 3
+                  }
+                ]
+              }
+            ],
+            "Direction": "Inbound",
+            "plot": "A couple of recently deceased ghosts contract the services of a \\\"bio-exorcist\\\" in order to remove the obnoxious new owners of their house.",
+            "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg",
+            "TestID": "102",
+            "Channel": "Mobile"
+          }
+        ]
+      }
+    ]
+  }
+]
