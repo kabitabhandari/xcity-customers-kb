@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Artist {
-    private String maleLeadActor;
-    private String femaleLeadActor;
-    private Integer rating;
+    private String maleLead;
+    private String femaleLead;
+    private Integer rottenTomatoesRating;
 }

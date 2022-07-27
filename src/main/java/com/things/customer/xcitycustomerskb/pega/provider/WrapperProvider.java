@@ -86,51 +86,51 @@ public class WrapperProvider {
 
                     // each item from incoming object..
                     if (eachIncomingResponse.getStatus().equals("OK") && eachIncomingResponse.getMovies() != null) {
-                        List<ShortlistedMovie> shortlistedMovieArrayList = new ArrayList<>();
+                        List<ShortlistedMoviesForWrapper> shortlistedMoviesForWrapperArrayList = new ArrayList<>();
                         for (Movie eachMovie : eachIncomingResponse.getMovies()) {
                             if (eachMovie.getStatus().equals("OK")) {
                                 for (Detail eachDetails : eachMovie.getDetails()) {
-                                    PictureInfo pictureInfo = new PictureInfo();
-                                    pictureInfo.setMovieName(eachDetails.getPictureName());
-                                    pictureInfo.setPlotGlance(eachDetails.getPlot());
-                                    pictureInfo.setReleasedYear(eachDetails.getYear());
+                                    SelectedMovieDetails selectedMovieDetails = new SelectedMovieDetails();
+                                    selectedMovieDetails.setMovieName(eachDetails.getPictureName());
+                                    selectedMovieDetails.setPlotGlance(eachDetails.getPlot());
+                                    selectedMovieDetails.setReleasedYear(eachDetails.getYear());
 
-                                    List<PictureInfo> pictureInfoList = new ArrayList<>();
-                                    pictureInfoList.add(pictureInfo);
+                                    List<SelectedMovieDetails> selectedMovieDetailsList = new ArrayList<>();
+                                    selectedMovieDetailsList.add(selectedMovieDetails);
 
-                                    ShortlistedMovie shortlistedMovie = new ShortlistedMovie();
-                                    shortlistedMovie.setPictureInfos(pictureInfoList);
+                                    ShortlistedMoviesForWrapper shortlistedMoviesForWrapper = new ShortlistedMoviesForWrapper();
+                                    shortlistedMoviesForWrapper.setSelectedMovieDetails(selectedMovieDetailsList);
 
-                                    shortlistedMovie.setBanner(eachMovie.getIndustryName());
-                                    shortlistedMovieArrayList.add(shortlistedMovie);
+                                    shortlistedMoviesForWrapper.setBigIndustry(eachMovie.getIndustryName());
+                                    shortlistedMoviesForWrapperArrayList.add(shortlistedMoviesForWrapper);
 
                                     for (GnaPega eachGenresAndActor : eachDetails.getGenreNActors()) {
                                         outgoingObject.setBoxOfficeID(eachDetails.getBoxOfficeID());
 
                                         List<Artist> artistList = new ArrayList<>();
                                         List<String> genresList = new ArrayList<>();
-                                        List<GnA> gnAList = new ArrayList<>();
-                                        GnA gna = new GnA();
+                                        List<GA> GAList = new ArrayList<>();
+                                        GA gna = new GA();
 
                                         for (Actor eachActor : eachGenresAndActor.getActors()) {
                                             Artist artist = new Artist();
-                                            artist.setMaleLeadActor(eachActor.getMaleLeadActor());
-                                            artist.setFemaleLeadActor(eachActor.getFemaleLeadActor());
-                                            artist.setRating(eachActor.getVote());
+                                            artist.setMaleLead(eachActor.getMaleLeadActor());
+                                            artist.setFemaleLead(eachActor.getFemaleLeadActor());
+                                            artist.setRottenTomatoesRating(eachActor.getVote());
                                             artistList.add(artist);
                                             gna.setArtists(artistList);
-                                            gnAList.add(gna);
+                                            GAList.add(gna);
                                         }
                                         for (String eachGenre : eachGenresAndActor.getGenres()) {
                                             genresList.add(eachGenre);
                                             gna.setGenres(genresList);
-                                            gnAList.add(gna);
+                                            GAList.add(gna);
                                         }
 
 
-                                        pictureInfo.setGenreNActors(gnAList);
+                                        selectedMovieDetails.setGenreNActors(GAList);
                                     }
-                                    outgoingObject.setShortlistedMovies(shortlistedMovieArrayList);
+                                    outgoingObject.setShortlistedMoviesForWrappers(shortlistedMoviesForWrapperArrayList);
                                 }
                             }
                         }

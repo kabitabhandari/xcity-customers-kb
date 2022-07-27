@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class WrapperResponse {
     private String boxOfficeID;
-    private List<ShortlistedMovie> shortlistedMovies;
+    private List<ShortlistedMoviesForWrapper> shortlistedMoviesForWrappers;
 }

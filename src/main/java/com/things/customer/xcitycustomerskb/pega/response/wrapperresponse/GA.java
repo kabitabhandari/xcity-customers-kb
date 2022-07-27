@@ -5,8 +5,8 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class GnA {
-    private List<String> Genres;
+public class GA {
+    private List<String> genres;
     private List<Artist> artists;
 
 
