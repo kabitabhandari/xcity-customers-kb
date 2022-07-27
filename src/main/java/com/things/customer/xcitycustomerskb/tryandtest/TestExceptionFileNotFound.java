@@ -1,4 +1,4 @@
-package com.things.customer.xcitycustomerskb.simpletry;
+package com.things.customer.xcitycustomerskb.tryandtest;
 
 import java.io.BufferedReader;
 import java.io.File;

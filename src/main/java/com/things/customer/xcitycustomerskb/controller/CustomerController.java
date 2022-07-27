@@ -2,11 +2,11 @@ package com.things.customer.xcitycustomerskb.controller;
 
 import com.things.customer.xcitycustomerskb.Exception.InvalidException;
 import com.things.customer.xcitycustomerskb.model.CustomerDetails;
+import com.things.customer.xcitycustomerskb.model.NewCustomerDetails;
+import com.things.customer.xcitycustomerskb.model.NewCustomerRequestBody;
 import com.things.customer.xcitycustomerskb.service.CustomerDetailsService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,13 +14,20 @@ import java.util.List;
 public class CustomerController {
     private static final String GET_SONGS = "v1/songs" ;
     private final String GET_CUSTOMER_DETAILS = "v1/mps/knowing/customers";
-    private final String GET_EACH_CUSTOMER_DETAILS = "v1/mps/knowing/customer/{customer-id}/details";
+    private final String GET_EACH_CUSTOMER_DETAILS = "v1/mps/knowing/customer/{id}/details";
+    private final String CREATE_NEW_CUSTOMER = "v1/mps/knowing/customer/create";
     private final CustomerDetailsService customerDetailsService;
 
     public CustomerController(CustomerDetailsService customerDetailsService) {
         this.customerDetailsService = customerDetailsService;
     }
 
+    /**
+     *
+     * @param memberChannel
+     * @return
+     * @throws Exception
+     */
     @GetMapping(path = GET_CUSTOMER_DETAILS)
     public List<CustomerDetails> getCustomers(@RequestHeader(value = "channel") String memberChannel) throws Exception {
         if (!customerDetailsService.isValidMemberChannel(memberChannel)) {
@@ -30,9 +37,15 @@ public class CustomerController {
         return response;
     }
 
+    /**
+     *
+     * @param memberChannel
+     * @param customerId
+     * @return
+     */
     @GetMapping(path = GET_EACH_CUSTOMER_DETAILS)
     public CustomerDetails getEachCustomer(@RequestHeader(value = "channel") String memberChannel,
-                                           @PathVariable("customer-id") String customerId) {
+                                           @PathVariable("id") String customerId) {
         if (!customerDetailsService.isValidMemberChannel(memberChannel)) {
             throw new InvalidException("Member Channel is invalid");
         }
@@ -40,8 +53,24 @@ public class CustomerController {
         return response;
     }
 
+    /**
+     * Gives the song by Denver..!
+     * @return String
+     */
     @GetMapping(path = GET_SONGS)
     public String getFavouriteSong() {
         return customerDetailsService.getDenverSong();
     }
+
+    /**
+     * Posts a new customer id and meta data in the system
+     * @return String
+     *
+     */
+    @PostMapping(path = CREATE_NEW_CUSTOMER)
+    public ResponseEntity<NewCustomerDetails> postNewCustomer(@RequestBody NewCustomerRequestBody requestBody) {
+        return customerDetailsService.getNew(requestBody);
+    }
+
+
 }

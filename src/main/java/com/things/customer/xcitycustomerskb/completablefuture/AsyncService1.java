@@ -17,20 +17,21 @@ import java.util.concurrent.CompletableFuture;
 
 @Service
 @Slf4j
-public class AsyncService {
+public class AsyncService1 {
     private static final String GET_ALL_CUSTOMERS_CONTEXT = "/all-customers-details";
     private final String MOCK_BASE_URL;
     private final RestTemplate restTemplate;
 
-    public AsyncService(@Value("${mockserver_base_url}") String mock_base_url,
-                        RestTemplate restTemplate) {
+    public AsyncService1(@Value("${mockserver_base_url}") String mock_base_url,
+                         RestTemplate restTemplate) {
         MOCK_BASE_URL = mock_base_url;
         this.restTemplate = restTemplate;
     }
 
     @Async
     public CompletableFuture<List<CustomerDetailsResponse>> getAllDetails(String memberChannel) throws InterruptedException {
-        Thread.sleep(6000);
+        Thread.sleep(600);
+        System.out.println("Thread name for async annotation in service class with @Async annotation ==> " + Thread.currentThread().getName());
 
         String url = buildUrlForGetAllCustomers().toUriString();
         HttpHeaders headers = new HttpHeaders();
@@ -46,6 +47,7 @@ public class AsyncService {
 
         // Converting CustomerDetailsResponse[].class to List<CustomerDetailsResponse>
         List<CustomerDetailsResponse> listCustomerDetailResponse = Arrays.asList(response.getBody());
+        System.out.println("Thread name for async annotation  in service class with @Async annotation ==> " + Thread.currentThread().getName());
 
         return CompletableFuture.completedFuture(listCustomerDetailResponse);
 

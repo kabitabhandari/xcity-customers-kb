@@ -3,13 +3,16 @@ package com.things.customer.xcitycustomerskb.provider;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.things.customer.xcitycustomerskb.Exception.InternalServerException;
+import com.things.customer.xcitycustomerskb.config.RestTemplateConfig;
 import com.things.customer.xcitycustomerskb.model.ModelForCustomerCareUnit;
+import com.things.customer.xcitycustomerskb.model.NewCustomerDetails;
+import com.things.customer.xcitycustomerskb.model.NewCustomerRequestBody;
 import com.things.customer.xcitycustomerskb.responsemodel.CustomerDetailsResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -21,14 +24,15 @@ import java.util.stream.Collectors;
 @Slf4j
 public class CustomerDetailsProvider {
     private static final String GET_ALL_CUSTOMERS_CONTEXT = "/all-customers-details";
-    private static final String GET_EACH_CUSTOMERS_CONTEXT = "/cust/";
+    private static final String GET_EACH_CUSTOMERS_CONTEXT = "/cust/"; //TODO do we need slash here??
+    private static final String POST_NEW_CUSTOMER_CONTEXT = "/cust/new";
     private static final String DETAILS = "/details";
     private final String MOCK_BASE_URL;
-    private final RestTemplate restTemplate;
+    private final RestTemplateConfig restTemplate;
 
     public CustomerDetailsProvider(
             @Value("${mockserver_base_url}") String MockserverBaseUrl,
-            RestTemplate restTemplate) {
+            RestTemplateConfig restTemplate) {
         this.MOCK_BASE_URL = MockserverBaseUrl;
         this.restTemplate = restTemplate;
     }
@@ -50,7 +54,7 @@ public class CustomerDetailsProvider {
         HttpEntity<String> requestEntity = new HttpEntity<>("parameters", headers);
 
         ResponseEntity<CustomerDetailsResponse[]> response =
-                restTemplate.exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse[].class);
+                restTemplate.myRestTemplate(new RestTemplateBuilder()).exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse[].class);
         log.info("Successfully Invoked Mock Server");
 
         if (response.getStatusCode() != HttpStatus.OK) {
@@ -66,6 +70,38 @@ public class CustomerDetailsProvider {
 
         return Arrays.asList(response.getBody());
     }
+
+    public CustomerDetailsResponse displayEachCustomerRecord(String customerId, String memberChannel) {
+        String url = buildUrlForGetEachCustomer(customerId).toUriString();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("channel", memberChannel);
+
+        HttpEntity<String> requestEntity = new HttpEntity<>("parameters", headers);
+
+        ResponseEntity<CustomerDetailsResponse> response =
+                restTemplate.myRestTemplate(new RestTemplateBuilder()).exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse.class);
+        log.info("Successfully Invoked Mock Server");
+
+        if (response.getStatusCode() != HttpStatus.OK) {
+            throw new InternalServerException("Response status code" + response.getStatusCode() + " " + "received from server for ");
+        }
+        return response.getBody();
+
+
+    }
+
+    public ResponseEntity<NewCustomerDetails> postCustomer(NewCustomerRequestBody requestBody){
+        String url = buildUrlForPostCustomer().toUriString();
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<NewCustomerRequestBody> requestEntity = new HttpEntity<>(requestBody, headers);
+        ResponseEntity<NewCustomerDetails> response =
+                restTemplate.myRestTemplate(new RestTemplateBuilder()).postForEntity(url, requestEntity,  NewCustomerDetails.class);
+        return response;
+
+
+    }
+
 
     /**
      * UpdatedResponseObjectForCustomerCareUnit accepts the whole list[] from response entity and does stream on it and
@@ -108,6 +144,13 @@ public class CustomerDetailsProvider {
         return UriComponentsBuilder.newInstance().scheme("http").host(MOCK_BASE_URL).path(GET_EACH_CUSTOMERS_CONTEXT).path(customerId).path(DETAILS).build();
     }
 
+
+    private UriComponents buildUrlForPostCustomer() {
+        return UriComponentsBuilder.newInstance().scheme("http").host(MOCK_BASE_URL).path(POST_NEW_CUSTOMER_CONTEXT).build();
+    }
+
+
+
     /**
      * gives json string out of response 'serialization'
      *
@@ -116,31 +159,11 @@ public class CustomerDetailsProvider {
     private void serializeResponseForWireProcess(ResponseEntity<CustomerDetailsResponse[]> response) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
+            System.out.println("objectmapper = "+ objectMapper);
             String d = objectMapper.writeValueAsString(response.getBody());
-            //System.out.println("json of response object >>> " + d);
+            System.out.println("json of response object >>> " + d);
         } catch (JsonProcessingException e) {
             e.getMessage();
         }
-    }
-
-
-    public CustomerDetailsResponse displayEachCustomerRecord(String customerId, String memberChannel) {
-        String url = buildUrlForGetEachCustomer(customerId).toUriString();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("channel", memberChannel);
-
-        HttpEntity<String> requestEntity = new HttpEntity<>("parameters", headers);
-
-        ResponseEntity<CustomerDetailsResponse> response =
-                restTemplate.exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse.class);
-        log.info("Successfully Invoked Mock Server");
-
-        if (response.getStatusCode() != HttpStatus.OK) {
-            throw new InternalServerException("Response status code" + response.getStatusCode() + " " + "received from server for ");
-        }
-        return response.getBody();
-
-
     }
 }
