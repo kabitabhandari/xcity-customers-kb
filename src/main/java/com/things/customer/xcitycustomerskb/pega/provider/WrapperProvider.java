@@ -83,6 +83,8 @@ public class WrapperProvider {
             WrapperResponse outgoingObject = new WrapperResponse();
             if (incomingObject != null) {
                 for (PegaResponse eachIncomingResponse : incomingObject) {
+                    outgoingObject.setBoxOfficeID(eachIncomingResponse.getBoxOfficeID());
+
 
                     // each item from incoming object..
                     if (eachIncomingResponse.getStatus().equals("OK") && eachIncomingResponse.getMovies() != null) {
@@ -105,7 +107,6 @@ public class WrapperProvider {
                                     shortlistedMoviesForWrapperArrayList.add(shortlistedMoviesForWrapper);
 
                                     for (GnaPega eachGenresAndActor : eachDetails.getGenreNActors()) {
-                                        outgoingObject.setBoxOfficeID(eachDetails.getBoxOfficeID());
 
                                         List<Artist> artistList = new ArrayList<>();
                                         List<String> genresList = new ArrayList<>();

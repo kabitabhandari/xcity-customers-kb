@@ -1,6 +1,7 @@
 [
   {
     "Status": "OK",
+    "BoxOfficeID": "hy-box-768-ttly",
     "Movies": [
       {
         "Status": "OK",
@@ -9,7 +10,6 @@
           {
             "MovieName": "The Cotton Club",
             "Year": "1984",
-            "BoxOfficeID": "6666",
             "ZoneID": "AllZones",
             "Director": "Francis Ford Coppola",
             "GenresAndActorList": [
@@ -92,7 +92,6 @@
           {
             "MovieName": "Beetlejuice",
             "Year": "1988",
-            "BoxOfficeID": "1111",
             "ZoneID": "WesternZones",
             "Director": "Frank Darabont",
             "GenresAndActorList": [
@@ -181,7 +180,6 @@
           {
             "MovieName": "Two States",
             "Year": "2008",
-            "BoxOfficeID": "2222",
             "ZoneID": "AllZones",
             "Director": "Karan Johar",
             "GenresAndActorList": [
@@ -264,7 +262,6 @@
           {
             "MovieName": "Deewana",
             "Year": "1984",
-            "BoxOfficeID": "3333",
             "ZoneID": "AllZones",
             "Director": "Francis Ford Coppola",
             "GenresAndActorList": [
@@ -347,7 +344,6 @@
           {
             "MovieName": "Judwa",
             "Year": "1984",
-            "BoxOfficeID": "4444",
             "ZoneID": "AllZones",
             "Director": "Francis Ford Coppola",
             "GenresAndActorList": [
@@ -430,7 +426,6 @@
           {
             "MovieName": "Talaash",
             "Year": "1984",
-            "BoxOfficeID": "5555",
             "ZoneID": "AllZones",
             "Director": "Francis Ford Coppola",
             "GenresAndActorList": [

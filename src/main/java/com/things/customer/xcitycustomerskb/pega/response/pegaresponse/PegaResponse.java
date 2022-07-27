@@ -8,6 +8,8 @@ import java.util.List;
 public class PegaResponse {
     @JsonProperty("Status")
     private String status;
+    @JsonProperty("BoxOfficeID")
+    private String boxOfficeID;
     @JsonProperty("Movies")
     private List<Movie> movies;
 
