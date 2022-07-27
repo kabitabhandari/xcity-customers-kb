@@ -1,126 +1,126 @@
 {
   "boxOfficeID": "5555",
-  "shortlistedMovies": [
+  "shortlistedMoviesForWrappers": [
     {
-      "banner": "Hollywood",
-      "pictureInfos": [
+      "bigIndustry": "Hollywood",
+      "selectedMovieDetails": [
         {
           "movieName": "The Cotton Club",
           "releasedYear": 1984,
           "genreNActors": [
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             }
           ],
@@ -129,125 +129,125 @@
       ]
     },
     {
-      "banner": "Hollywood",
-      "pictureInfos": [
+      "bigIndustry": "Hollywood",
+      "selectedMovieDetails": [
         {
           "movieName": "Beetlejuice",
           "releasedYear": 1988,
           "genreNActors": [
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             }
           ],
@@ -256,125 +256,125 @@
       ]
     },
     {
-      "banner": "Bollywood",
-      "pictureInfos": [
+      "bigIndustry": "Bollywood",
+      "selectedMovieDetails": [
         {
           "movieName": "Two States",
           "releasedYear": 2008,
           "genreNActors": [
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Dinesh Mall",
-                  "femaleLeadActor": "Dipesh Shetty",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Mina Ji",
-                  "femaleLeadActor": "Simron Nani",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Dolly Red",
-                  "femaleLeadActor": "Sony Kapoor",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Dinesh Mall",
+                  "femaleLead": "Dipesh Shetty",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Mina Ji",
+                  "femaleLead": "Simron Nani",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Dolly Red",
+                  "femaleLead": "Sony Kapoor",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Dinesh Mall",
-                  "femaleLeadActor": "Dipesh Shetty",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Mina Ji",
-                  "femaleLeadActor": "Simron Nani",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Dolly Red",
-                  "femaleLeadActor": "Sony Kapoor",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Dinesh Mall",
+                  "femaleLead": "Dipesh Shetty",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Mina Ji",
+                  "femaleLead": "Simron Nani",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Dolly Red",
+                  "femaleLead": "Sony Kapoor",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Dinesh Mall",
-                  "femaleLeadActor": "Dipesh Shetty",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Mina Ji",
-                  "femaleLeadActor": "Simron Nani",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Dolly Red",
-                  "femaleLeadActor": "Sony Kapoor",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Dinesh Mall",
+                  "femaleLead": "Dipesh Shetty",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Mina Ji",
+                  "femaleLead": "Simron Nani",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Dolly Red",
+                  "femaleLead": "Sony Kapoor",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Dinesh Mall",
-                  "femaleLeadActor": "Dipesh Shetty",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Mina Ji",
-                  "femaleLeadActor": "Simron Nani",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Dolly Red",
-                  "femaleLeadActor": "Sony Kapoor",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Dinesh Mall",
+                  "femaleLead": "Dipesh Shetty",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Mina Ji",
+                  "femaleLead": "Simron Nani",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Dolly Red",
+                  "femaleLead": "Sony Kapoor",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Dinesh Mall",
-                  "femaleLeadActor": "Dipesh Shetty",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Mina Ji",
-                  "femaleLeadActor": "Simron Nani",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Dolly Red",
-                  "femaleLeadActor": "Sony Kapoor",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Dinesh Mall",
+                  "femaleLead": "Dipesh Shetty",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Mina Ji",
+                  "femaleLead": "Simron Nani",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Dolly Red",
+                  "femaleLead": "Sony Kapoor",
+                  "rottenTomatoesRating": 3
+                }
               ]
             }
           ],
@@ -383,125 +383,125 @@
       ]
     },
     {
-      "banner": "Bollywood",
-      "pictureInfos": [
+      "bigIndustry": "Bollywood",
+      "selectedMovieDetails": [
         {
           "movieName": "Deewana",
           "releasedYear": 1984,
           "genreNActors": [
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             }
           ],
@@ -510,125 +510,125 @@
       ]
     },
     {
-      "banner": "Bollywood",
-      "pictureInfos": [
+      "bigIndustry": "Bollywood",
+      "selectedMovieDetails": [
         {
           "movieName": "Judwa",
           "releasedYear": 1984,
           "genreNActors": [
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             }
           ],
@@ -637,125 +637,125 @@
       ]
     },
     {
-      "banner": "Bollywood",
-      "pictureInfos": [
+      "bigIndustry": "Bollywood",
+      "selectedMovieDetails": [
         {
           "movieName": "Talaash",
           "releasedYear": 1984,
           "genreNActors": [
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             },
             {
-              "artists": [
-                {
-                  "maleLeadActor": "Bob Minions",
-                  "femaleLeadActor": "Wilson Temp",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Cuddy Sky",
-                  "femaleLeadActor": "Cameron Jeff",
-                  "rating": 4
-                },
-                {
-                  "maleLeadActor": "Amber Red",
-                  "femaleLeadActor": "Austin Dorm",
-                  "rating": 3
-                }
-              ],
               "genres": [
                 "Mystery",
                 "Western"
+              ],
+              "artists": [
+                {
+                  "maleLead": "Bob Minions",
+                  "femaleLead": "Wilson Temp",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Cuddy Sky",
+                  "femaleLead": "Cameron Jeff",
+                  "rottenTomatoesRating": 4
+                },
+                {
+                  "maleLead": "Amber Red",
+                  "femaleLead": "Austin Dorm",
+                  "rottenTomatoesRating": 3
+                }
               ]
             }
           ],
