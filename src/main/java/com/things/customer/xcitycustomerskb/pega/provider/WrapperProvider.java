@@ -77,12 +77,11 @@ public class WrapperProvider {
      * @return WrapperResponse
      */
     public WrapperResponse mapToInteraction(List<PegaResponse> incomingObject) {  //incomingObject comes as a list [...]
-      // wrapper model
-        WrapperResponse outgoingObject = new WrapperResponse();
-
         try{
             if(incomingObject != null){
                 for(PegaResponse eachIncomingResponse : incomingObject){
+                    WrapperResponse outgoingObject = new WrapperResponse();
+
                     // each item from incoming object..
                     if(eachIncomingResponse.getStatus().equals("OK") && eachIncomingResponse.getMovies() != null){
                         for(Movie eachMovie : eachIncomingResponse.getMovies()){
@@ -92,6 +91,7 @@ public class WrapperProvider {
                             if(eachMovie.getStatus().equals("OK")){
 
                                 for(Detail eachDetails : eachMovie.getDetails()){
+
 
                                     PictureInfo pictureInfo = new PictureInfo();
                                     pictureInfo.setMovieName(eachDetails.getPictureName());
@@ -114,6 +114,7 @@ public class WrapperProvider {
                                         List<Artist> artistList = new ArrayList<>();
                                         List<String> genresList = new ArrayList<>();
                                         List<GnA> gnAList = new ArrayList<>();
+                                        GnA gna = new GnA();
 
                                         for (Actor eachActor : eachGenresAndActor.getActors()) {
                                             Artist artist = new Artist();
@@ -121,33 +122,35 @@ public class WrapperProvider {
                                             artist.setFemaleLeadActor(eachActor.getFemaleLeadActor());
                                             artist.setRating(eachActor.getVote());
                                             artistList.add(artist);
+                                            gna.setArtists(artistList);
+                                            gnAList.add(gna);
                                         }
-
                                         for (String eachGenre : eachGenresAndActor.getGenres()) {
                                             genresList.add(eachGenre);
+                                            gna.setGenres(genresList);
+                                            gnAList.add(gna);
                                         }
 
-                                        GnA gna = new GnA();
-                                        gna.setArtists(artistList);
-                                        gna.setGenres(genresList);
 
-                                        gnAList.add(gna);
                                         pictureInfo.setGenreNActors(gnAList);
                                     }
+
                                 }
                                 outgoingObject.setShortlistedMovies(shortlistedMovieArrayList);
 
+
+                                System.out.println(outgoingObject);
                             }
                         }
+                        return outgoingObject;
                     }
+
                 }
             }
         }catch(Exception ex){
             throw new GeneralException(ex);
         }
-        System.out.println(outgoingObject);
-        return outgoingObject;
-
+        return null;
 
     }
 
