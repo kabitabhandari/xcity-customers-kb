@@ -98,10 +98,11 @@ public class WrapperProvider {
                                     List<WrapperDetail> WrapperDetailList = new ArrayList<>();
                                     WrapperDetail wrapperDetail = new WrapperDetail();
                                     List<GnaWrapper> GnaWrapperList = new ArrayList<>();
+                                    GnaWrapper gnaWrapper = new GnaWrapper();
+
                                     for (GnaPega eachGenresAndActor : eachDetails.getGenreNActors()) {
 
                                         List<WrapperArtist> WrapperArtistList = new ArrayList<>();
-                                        GnaWrapper gna = new GnaWrapper();
 
                                         for (PegaActor eachPegaActor : eachGenresAndActor.getPegaActors()) {
                                             WrapperArtist WrapperArtist = new WrapperArtist();
@@ -109,17 +110,17 @@ public class WrapperProvider {
                                             WrapperArtist.setFemaleLead(eachPegaActor.getFemaleLeadActor());
                                             WrapperArtist.setRottenTomatoesRating(eachPegaActor.getVote());
                                             WrapperArtistList.add(WrapperArtist);
-                                            gna.setWrapperArtists(WrapperArtistList);
-                                            GnaWrapperList.add(gna);
-                                        }
+                                            gnaWrapper.setWrapperArtists(WrapperArtistList);
 
+                                        }
                                         List<String> genresList = new ArrayList<>();
 
                                         for (String eachGenre : eachGenresAndActor.getGenres()) {
                                             genresList.add(eachGenre);
-                                            gna.setGenres(genresList);
-                                            GnaWrapperList.add(gna);
+                                            gnaWrapper.setGenres(genresList);
                                         }
+                                        GnaWrapperList.add(gnaWrapper);
+
                                         wrapperDetail.setGenreNActors(GnaWrapperList);
                                     }
                                     wrapperDetail.setMovieName(eachDetails.getPictureName());
@@ -142,6 +143,7 @@ public class WrapperProvider {
                                 }
                             }
                         }
+                        System.out.println(wrapperResponse);
                         return wrapperResponse;
                     }
                 }
