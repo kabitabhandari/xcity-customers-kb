@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class WrapperProvider {
@@ -81,7 +82,9 @@ public class WrapperProvider {
     public WrapperResponse mapToInteraction(List<PegaResponse> incomingObject) {  //incomingObject comes as a list [...]
         try {
             WrapperResponse outgoingObject = new WrapperResponse();
-            if (incomingObject != null) {
+            Optional<List<PegaResponse>> b = Optional.ofNullable(incomingObject);
+            System.out.println("b >>> " + b);
+            if(b.isPresent()){
                 for (PegaResponse eachIncomingResponse : incomingObject) {
                     outgoingObject.setBoxOfficeID(eachIncomingResponse.getBoxOfficeID());
 
