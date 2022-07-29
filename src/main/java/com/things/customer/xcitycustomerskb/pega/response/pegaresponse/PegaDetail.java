@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Detail {
+public class PegaDetail {
     @JsonProperty("MovieName")
     private String pictureName;
     @JsonProperty("Year")

@@ -11,6 +11,6 @@ public class PegaResponse {
     @JsonProperty("BoxOfficeID")
     private String boxOfficeID;
     @JsonProperty("Movies")
-    private List<Movie> movies;
+    private List<PegaMovie> pegaMovies;
 
 }

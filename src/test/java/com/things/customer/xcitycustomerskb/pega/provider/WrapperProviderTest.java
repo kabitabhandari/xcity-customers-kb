@@ -36,36 +36,36 @@ class WrapperProviderTest {
     private WrapperResponse actualWrapperResponse() {
         WrapperResponse wrapperResponse = new WrapperResponse();
         wrapperResponse.setBoxOfficeID("mock-box-office-id");
-        List<ShortlistedMoviesForWrapper> shortedListedMoviesList = new ArrayList<>();
+        List<WrapperMovie> shortedListedMoviesList = new ArrayList<>();
 
-        ShortlistedMoviesForWrapper slmw = new ShortlistedMoviesForWrapper();
+        WrapperMovie slmw = new WrapperMovie();
         slmw.setBigIndustry("mock-industry-name");
 
-        List<SelectedMovieDetails> selectedMoviesDetailList = new ArrayList<>();
-        SelectedMovieDetails smd = new SelectedMovieDetails();
+        List<WrapperDetail> selectedMoviesDetailList = new ArrayList<>();
+        WrapperDetail smd = new WrapperDetail();
         smd.setMovieName("House MD");
         smd.setPlotGlance("what is the message");
         smd.setReleasedYear(1992);
-        List<GA> gaList = new ArrayList<>();
-        GA ga = new GA();
-        ga.setGenres(new ArrayList<>(Arrays.asList("comedy", "humor", "dark-jokes")));
+        List<GnaWrapper> gnaWrapperList = new ArrayList<>();
+        GnaWrapper gnaWrapper = new GnaWrapper();
+        gnaWrapper.setGenres(new ArrayList<>(Arrays.asList("comedy", "humor", "dark-jokes")));
 
-        List<Artist> artistList = new ArrayList<>();
-        Artist artist = new Artist();
-        artist.setFemaleLead("Angelina");
-        artist.setMaleLead("Tom");
-        artist.setRottenTomatoesRating(5);
-        artistList.add(artist);
-        ga.setArtists(artistList);
+        List<WrapperArtist> WrapperArtistList = new ArrayList<>();
+        WrapperArtist WrapperArtist = new WrapperArtist();
+        WrapperArtist.setFemaleLead("Angelina");
+        WrapperArtist.setMaleLead("Tom");
+        WrapperArtist.setRottenTomatoesRating(5);
+        WrapperArtistList.add(WrapperArtist);
+        gnaWrapper.setWrapperArtists(WrapperArtistList);
 
-        gaList.add(ga);
-        smd.setGenreNActors(gaList);
+        gnaWrapperList.add(gnaWrapper);
+        smd.setGenreNActors(gnaWrapperList);
 
         selectedMoviesDetailList.add(smd);
-        slmw.setSelectedMovieDetails(selectedMoviesDetailList);
+        slmw.setWrapperDetails(selectedMoviesDetailList);
 
         shortedListedMoviesList.add(slmw);
-        wrapperResponse.setShortlistedMoviesForWrappers(shortedListedMoviesList);
+        wrapperResponse.setWrapperMovies(shortedListedMoviesList);
         return wrapperResponse;
     }
 
@@ -77,45 +77,45 @@ class WrapperProviderTest {
         pegaResponse.setStatus("OK");
 
 
-        List<Movie> movieList = new ArrayList<>();
-        Movie movie = new Movie();
-        movie.setStatus("OK");
-        movie.setIndustryName("mock-industry-name");
+        List<PegaMovie> pegaMovieList = new ArrayList<>();
+        PegaMovie pegaMovie = new PegaMovie();
+        pegaMovie.setStatus("OK");
+        pegaMovie.setIndustryName("mock-industry-name");
 
-        List<Detail> detailList = new ArrayList<>();
-        Detail detail = new Detail();
-        detail.setChannel("mock-channel");
-        detail.setBoxOfficeID("test-oy-pe-tt-iuop90");
-        detail.setDirection("outbound");
-        detail.setDirector("Gregory");
-        detail.setZoneID("zone-7689");
-        detail.setPictureName("House MD");
-        detail.setPosterUrl("https://funny");
-        detail.setTestID("90po");
-        detail.setPlot("what is the message");
-        detail.setYear(1992);
+        List<PegaDetail> pegaDetailList = new ArrayList<>();
+        PegaDetail pegaDetail = new PegaDetail();
+        pegaDetail.setChannel("mock-channel");
+        pegaDetail.setBoxOfficeID("test-oy-pe-tt-iuop90");
+        pegaDetail.setDirection("outbound");
+        pegaDetail.setDirector("Gregory");
+        pegaDetail.setZoneID("zone-7689");
+        pegaDetail.setPictureName("House MD");
+        pegaDetail.setPosterUrl("https://funny");
+        pegaDetail.setTestID("90po");
+        pegaDetail.setPlot("what is the message");
+        pegaDetail.setYear(1992);
 
         List<GnaPega> gnaPegaList = new ArrayList<>();
 
         GnaPega gnaPega = new GnaPega();
         gnaPega.setGenres(new ArrayList<>(Arrays.asList("comedy", "humor", "dark-jokes")));
 
-        List<Actor> actorList = new ArrayList<>();
-        Actor actor = new Actor();
+        List<PegaActor> pegaActorList = new ArrayList<>();
+        PegaActor pegaActor = new PegaActor();
 
-        actor.setMaleLeadActor("Tom");
-        actor.setFemaleLeadActor("Angelina");
-        actor.setVote(5);
-        actorList.add(actor);
-        gnaPega.setActors(actorList);
+        pegaActor.setMaleLeadActor("Tom");
+        pegaActor.setFemaleLeadActor("Angelina");
+        pegaActor.setVote(5);
+        pegaActorList.add(pegaActor);
+        gnaPega.setPegaActors(pegaActorList);
         gnaPegaList.add(gnaPega);
-        detail.setGenreNActors(gnaPegaList);
+        pegaDetail.setGenreNActors(gnaPegaList);
 
-        detailList.add(detail);
+        pegaDetailList.add(pegaDetail);
 
-        movie.setDetails(detailList);
-        movieList.add(movie);
-        pegaResponse.setMovies(movieList);
+        pegaMovie.setPegaDetails(pegaDetailList);
+        pegaMovieList.add(pegaMovie);
+        pegaResponse.setPegaMovies(pegaMovieList);
 
         pegaResponseList.add(pegaResponse);
 

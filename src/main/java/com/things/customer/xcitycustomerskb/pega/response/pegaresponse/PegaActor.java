@@ -7,7 +7,7 @@ import lombok.Data;
 
 
 @Data
-public class Actor {
+public class PegaActor {
     @JsonProperty("MaleLeadActor")
     private String maleLeadActor;
 

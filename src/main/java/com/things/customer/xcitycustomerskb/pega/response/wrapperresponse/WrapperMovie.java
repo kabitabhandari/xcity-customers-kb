@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ShortlistedMoviesForWrapper {
+public class WrapperMovie {
+    private List<WrapperDetail> wrapperDetails;
     private String bigIndustry;
-    private List<SelectedMovieDetails> selectedMovieDetails;
 }

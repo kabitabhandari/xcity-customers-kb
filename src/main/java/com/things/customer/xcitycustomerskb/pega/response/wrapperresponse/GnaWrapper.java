@@ -5,9 +5,9 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class GA {
+public class GnaWrapper {
+    private List<WrapperArtist> WrapperArtists;
     private List<String> genres;
-    private List<Artist> artists;
 
 
 

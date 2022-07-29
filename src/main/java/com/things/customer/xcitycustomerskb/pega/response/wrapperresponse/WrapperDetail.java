@@ -5,10 +5,10 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class SelectedMovieDetails {
+public class WrapperDetail {
+    private List<GnaWrapper> genreNActors;
     private String movieName;
     private Integer releasedYear;
-    private List<GA> genreNActors;
     private String plotGlance;
 
 }

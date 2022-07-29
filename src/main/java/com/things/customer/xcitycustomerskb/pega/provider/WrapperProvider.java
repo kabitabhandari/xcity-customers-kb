@@ -76,69 +76,73 @@ public class WrapperProvider {
     /**
      * Map Pega response to Wrapper response
      *
-     * @param incomingObject
+     * @param pegaResponseList
      * @return WrapperResponse
      */
-    public WrapperResponse mapToInteraction(List<PegaResponse> incomingObject) {  //incomingObject comes as a list [...]
+    public WrapperResponse mapToInteraction(List<PegaResponse> pegaResponseList) {  //pegaResponseList comes as a list [...]
         try {
-            WrapperResponse outgoingObject = new WrapperResponse();
-            Optional<List<PegaResponse>> b = Optional.ofNullable(incomingObject);
+            WrapperResponse wrapperResponse = new WrapperResponse();
+
+            Optional<List<PegaResponse>> b = Optional.ofNullable(pegaResponseList);
             System.out.println("b >>> " + b);
             if(b.isPresent()){
-                for (PegaResponse eachIncomingResponse : incomingObject) {
-                    outgoingObject.setBoxOfficeID(eachIncomingResponse.getBoxOfficeID());
+                for (PegaResponse eachPegaResponse : pegaResponseList) {
+                    // Iterate each item from incoming object
+                    if (eachPegaResponse.getStatus().equals("OK") && eachPegaResponse.getPegaMovies() != null) {
 
+                        List<WrapperMovie> wrapperMovieList = new ArrayList<>();
 
-                    // each item from incoming object..
-                    if (eachIncomingResponse.getStatus().equals("OK") && eachIncomingResponse.getMovies() != null) {
-                        List<ShortlistedMoviesForWrapper> shortlistedMoviesForWrapperArrayList = new ArrayList<>();
-                        for (Movie eachMovie : eachIncomingResponse.getMovies()) {
-                            if (eachMovie.getStatus().equals("OK")) {
-                                for (Detail eachDetails : eachMovie.getDetails()) {
-                                    SelectedMovieDetails selectedMovieDetails = new SelectedMovieDetails();
-                                    selectedMovieDetails.setMovieName(eachDetails.getPictureName());
-                                    selectedMovieDetails.setPlotGlance(eachDetails.getPlot());
-                                    selectedMovieDetails.setReleasedYear(eachDetails.getYear());
-
-                                    List<SelectedMovieDetails> selectedMovieDetailsList = new ArrayList<>();
-                                    selectedMovieDetailsList.add(selectedMovieDetails);
-
-                                    ShortlistedMoviesForWrapper shortlistedMoviesForWrapper = new ShortlistedMoviesForWrapper();
-                                    shortlistedMoviesForWrapper.setSelectedMovieDetails(selectedMovieDetailsList);
-
-                                    shortlistedMoviesForWrapper.setBigIndustry(eachMovie.getIndustryName());
-                                    shortlistedMoviesForWrapperArrayList.add(shortlistedMoviesForWrapper);
-
+                        for (PegaMovie eachPegaMovie : eachPegaResponse.getPegaMovies()) {
+                            if (eachPegaMovie.getStatus().equals("OK")) {
+                                for (PegaDetail eachDetails : eachPegaMovie.getPegaDetails()) {
+                                    List<WrapperDetail> WrapperDetailList = new ArrayList<>();
+                                    WrapperDetail wrapperDetail = new WrapperDetail();
+                                    List<GnaWrapper> GnaWrapperList = new ArrayList<>();
                                     for (GnaPega eachGenresAndActor : eachDetails.getGenreNActors()) {
 
-                                        List<Artist> artistList = new ArrayList<>();
-                                        List<String> genresList = new ArrayList<>();
-                                        List<GA> GAList = new ArrayList<>();
-                                        GA gna = new GA();
+                                        List<WrapperArtist> WrapperArtistList = new ArrayList<>();
+                                        GnaWrapper gna = new GnaWrapper();
 
-                                        for (Actor eachActor : eachGenresAndActor.getActors()) {
-                                            Artist artist = new Artist();
-                                            artist.setMaleLead(eachActor.getMaleLeadActor());
-                                            artist.setFemaleLead(eachActor.getFemaleLeadActor());
-                                            artist.setRottenTomatoesRating(eachActor.getVote());
-                                            artistList.add(artist);
-                                            gna.setArtists(artistList);
-                                            GAList.add(gna);
+                                        for (PegaActor eachPegaActor : eachGenresAndActor.getPegaActors()) {
+                                            WrapperArtist WrapperArtist = new WrapperArtist();
+                                            WrapperArtist.setMaleLead(eachPegaActor.getMaleLeadActor());
+                                            WrapperArtist.setFemaleLead(eachPegaActor.getFemaleLeadActor());
+                                            WrapperArtist.setRottenTomatoesRating(eachPegaActor.getVote());
+                                            WrapperArtistList.add(WrapperArtist);
+                                            gna.setWrapperArtists(WrapperArtistList);
+                                            GnaWrapperList.add(gna);
                                         }
+
+                                        List<String> genresList = new ArrayList<>();
+
                                         for (String eachGenre : eachGenresAndActor.getGenres()) {
                                             genresList.add(eachGenre);
                                             gna.setGenres(genresList);
-                                            GAList.add(gna);
+                                            GnaWrapperList.add(gna);
                                         }
-
-
-                                        selectedMovieDetails.setGenreNActors(GAList);
+                                        wrapperDetail.setGenreNActors(GnaWrapperList);
                                     }
-                                    outgoingObject.setShortlistedMoviesForWrappers(shortlistedMoviesForWrapperArrayList);
+                                    wrapperDetail.setMovieName(eachDetails.getPictureName());
+                                    wrapperDetail.setReleasedYear(eachDetails.getYear());
+                                    wrapperDetail.setPlotGlance(eachDetails.getPlot());
+
+                                    WrapperDetailList.add(wrapperDetail);
+
+                                    WrapperMovie wrapperMovie = new WrapperMovie();
+
+                                    wrapperMovie.setWrapperDetails(WrapperDetailList);
+                                    wrapperMovie.setBigIndustry(eachPegaMovie.getIndustryName());
+
+                                    wrapperMovieList.add(wrapperMovie);
+
+
+                                    wrapperResponse.setWrapperMovies(wrapperMovieList);
+                                    wrapperResponse.setBoxOfficeID(eachPegaResponse.getBoxOfficeID());
+
                                 }
                             }
                         }
-                        return outgoingObject;
+                        return wrapperResponse;
                     }
                 }
             }
