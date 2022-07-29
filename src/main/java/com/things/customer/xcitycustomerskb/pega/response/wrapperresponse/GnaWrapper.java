@@ -5,7 +5,10 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ShortlistedMovie {
-    private String banner;
-    private List<PictureInfo> pictureInfos;
+public class GnaWrapper {
+    private List<WrapperArtist> WrapperArtists;
+    private List<String> genres;
+
+
+
 }

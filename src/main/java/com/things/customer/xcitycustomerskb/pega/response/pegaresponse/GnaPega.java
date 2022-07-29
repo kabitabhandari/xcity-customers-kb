@@ -10,7 +10,7 @@ public class GnaPega {
     @JsonProperty("Genres")
     private List<String> Genres;
      @JsonProperty("Actors")
-    private List<Actor> actors;
+    private List<PegaActor> pegaActors;
 
 
 

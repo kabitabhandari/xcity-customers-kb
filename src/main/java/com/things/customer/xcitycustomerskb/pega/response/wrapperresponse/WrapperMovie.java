@@ -5,10 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class GnA {
-    private List<String> Genres;
-    private List<Artist> artists;
-
-
-
+public class WrapperMovie {
+    private List<WrapperDetail> wrapperDetails;
+    private String bigIndustry;
 }
