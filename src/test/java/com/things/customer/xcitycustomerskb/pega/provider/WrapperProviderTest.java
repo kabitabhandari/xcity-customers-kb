@@ -1,5 +1,6 @@
 package com.things.customer.xcitycustomerskb.pega.provider;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.things.customer.xcitycustomerskb.config.RestTemplateConfig;
 import com.things.customer.xcitycustomerskb.pega.response.pegaresponse.*;
 import com.things.customer.xcitycustomerskb.pega.response.wrapperresponse.*;
@@ -11,6 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +34,13 @@ class WrapperProviderTest {
         WrapperResponse expectedWrapperResponse = wrapperProvider.mapToInteraction(mockPegaResponse());
 
         Assertions.assertEquals(expectedWrapperResponse, actualWrapperResponse(), "Wrapper response mis-match");
+    }
+
+    @Test
+    public void mapToInteractionShouldReturnWrapperResponse2() {
+        WrapperResponse expectedWrapperResponse = wrapperProvider.mapToInteraction(mockPegaResponseFromFile());
+
+        Assertions.assertEquals(expectedWrapperResponse, actualWrapperResponseFromFile(), "Wrapper response mis-match");
     }
 
     private WrapperResponse actualWrapperResponse() {
@@ -121,6 +131,37 @@ class WrapperProviderTest {
 
         return pegaResponseList;
 
+    }
+
+
+    private List<PegaResponse> mockPegaResponseFromFile() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+             PegaResponse[] pegaResponse = mapper.readValue(new File("src/test/Pega.json"), PegaResponse[].class);
+            return Arrays.asList(pegaResponse);
+        }catch(IOException ex) {
+            ex.printStackTrace();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
+
+    private WrapperResponse actualWrapperResponseFromFile() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            WrapperResponse wrapperResponse = mapper.readValue(new File("src/test/Wrapper.json"), WrapperResponse.class);
+            System.out.println(">>>>" + wrapperResponse);
+            return wrapperResponse;
+        }catch(IOException ex) {
+            ex.printStackTrace();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return null;
     }
 
 
