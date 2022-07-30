@@ -1,16 +1,20 @@
 package com.things.customer.xcitycustomerskb.pega.provider;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.things.customer.xcitycustomerskb.config.RestTemplateConfig;
+import com.things.customer.xcitycustomerskb.pega.request.pega.PegaRequest;
 import com.things.customer.xcitycustomerskb.pega.response.pegaresponse.*;
 import com.things.customer.xcitycustomerskb.pega.response.wrapperresponse.*;
 import com.things.customer.xcitycustomerskb.pega.util.MappingUtility;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,16 +22,34 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
 class WrapperProviderTest {
     @Mock
     MappingUtility mappingUtility;
 
+
     @Mock
-    RestTemplateConfig restTemplateConfig;
+    RestTemplate restTemplate;
 
     @InjectMocks
     WrapperProvider wrapperProvider;
+
+    @Test
+    public void postCallPegaShouldReturnPegaResponseList() {
+        ResponseEntity<PegaResponse> postResponse = new ResponseEntity(mockPegaResponseFromResponseEntity(), HttpStatus.OK);
+
+        when(restTemplate
+                .postForEntity(
+                        ArgumentMatchers.anyString(),  //url
+                        ArgumentMatchers.any(),        //request body
+                        ArgumentMatchers.<Class<PegaResponse>>any())  //response class
+        ).thenReturn(postResponse);
+
+        List<PegaResponse> actualResponse = this.wrapperProvider.postCallPega(mockPegaRequestBody());
+        System.out.println(actualResponse);
+    }
 
     @Test
     public void mapToInteractionShouldReturnWrapperResponse() {
@@ -81,7 +103,46 @@ class WrapperProviderTest {
 
     private List<PegaResponse> mockPegaResponse() {
         List<PegaResponse> pegaResponseList = new ArrayList<>();
+        PegaResponse pegaResponse = mockPegaResponseFromResponseEntity();
+        pegaResponseList.add(pegaResponse);
+        return pegaResponseList;
+    }
 
+
+    private List<PegaResponse> mockPegaResponseFromFile() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            PegaResponse[] pegaResponse = mapper.readValue(new File("src/test/Pega.json"), PegaResponse[].class);
+            return Arrays.asList(pegaResponse);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
+
+    private WrapperResponse actualWrapperResponseFromFile() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            WrapperResponse wrapperResponse = mapper.readValue(new File("src/test/Wrapper.json"), WrapperResponse.class);
+            return wrapperResponse;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private PegaRequest mockPegaRequestBody() {
+        return new PegaRequest();
+    }
+
+    private PegaResponse mockPegaResponseFromResponseEntity() {
         PegaResponse pegaResponse = new PegaResponse();
         pegaResponse.setBoxOfficeID("mock-box-office-id");
         pegaResponse.setStatus("OK");
@@ -127,42 +188,6 @@ class WrapperProviderTest {
         pegaMovieList.add(pegaMovie);
         pegaResponse.setPegaMovies(pegaMovieList);
 
-        pegaResponseList.add(pegaResponse);
-
-        return pegaResponseList;
-
+        return pegaResponse;
     }
-
-
-    private List<PegaResponse> mockPegaResponseFromFile() {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-             PegaResponse[] pegaResponse = mapper.readValue(new File("src/test/Pega.json"), PegaResponse[].class);
-            return Arrays.asList(pegaResponse);
-        }catch(IOException ex) {
-            ex.printStackTrace();
-        } catch(Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return null;
-    }
-
-
-    private WrapperResponse actualWrapperResponseFromFile() {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            WrapperResponse wrapperResponse = mapper.readValue(new File("src/test/Wrapper.json"), WrapperResponse.class);
-            System.out.println(">>>>" + wrapperResponse);
-            return wrapperResponse;
-        }catch(IOException ex) {
-            ex.printStackTrace();
-        } catch(Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return null;
-    }
-
-
 }

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -28,11 +29,11 @@ public class CustomerDetailsProvider {
     private static final String POST_NEW_CUSTOMER_CONTEXT = "/cust/new";
     private static final String DETAILS = "/details";
     private final String MOCK_BASE_URL;
-    private final RestTemplateConfig restTemplate;
+    private final RestTemplate restTemplate;
 
     public CustomerDetailsProvider(
             @Value("${mockserver_base_url}") String MockserverBaseUrl,
-            RestTemplateConfig restTemplate) {
+            RestTemplate restTemplate) {
         this.MOCK_BASE_URL = MockserverBaseUrl;
         this.restTemplate = restTemplate;
     }
@@ -54,7 +55,7 @@ public class CustomerDetailsProvider {
         HttpEntity<String> requestEntity = new HttpEntity<>("parameters", headers);
 
         ResponseEntity<CustomerDetailsResponse[]> response =
-                restTemplate.myRestTemplate(new RestTemplateBuilder()).exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse[].class);
+                restTemplate.exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse[].class);
         log.info("Successfully Invoked Mock Server");
 
         if (response.getStatusCode() != HttpStatus.OK) {
@@ -80,7 +81,7 @@ public class CustomerDetailsProvider {
         HttpEntity<String> requestEntity = new HttpEntity<>("parameters", headers);
 
         ResponseEntity<CustomerDetailsResponse> response =
-                restTemplate.myRestTemplate(new RestTemplateBuilder()).exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse.class);
+                restTemplate.exchange(url, HttpMethod.GET, requestEntity, CustomerDetailsResponse.class);
         log.info("Successfully Invoked Mock Server");
 
         if (response.getStatusCode() != HttpStatus.OK) {
@@ -96,7 +97,7 @@ public class CustomerDetailsProvider {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<NewCustomerRequestBody> requestEntity = new HttpEntity<>(requestBody, headers);
         ResponseEntity<NewCustomerDetails> response =
-                restTemplate.myRestTemplate(new RestTemplateBuilder()).postForEntity(url, requestEntity,  NewCustomerDetails.class);
+                restTemplate.postForEntity(url, requestEntity,  NewCustomerDetails.class);
         return response;
 
 

@@ -13,6 +13,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,9 +22,9 @@ import java.util.List;
 @Component
 public class WrapperProvider {
     private final MappingUtility mapUtil;
-    private final RestTemplateConfig restTemplate;
+    private final RestTemplate restTemplate;
 
-    public WrapperProvider(MappingUtility mapUtil, RestTemplateConfig restTemplate) {
+    public WrapperProvider(MappingUtility mapUtil, RestTemplate restTemplate) {
         this.mapUtil = mapUtil;
         this.restTemplate = restTemplate;
     }
@@ -63,7 +64,7 @@ public class WrapperProvider {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<PegaRequest> requestEntity = new HttpEntity<>(pegaRequestBody, headers);
         ResponseEntity<PegaResponse> response =
-                restTemplate.myRestTemplate(new RestTemplateBuilder()).postForEntity(url, requestEntity, PegaResponse.class);
+                restTemplate.postForEntity(url, requestEntity, PegaResponse.class);
         if (response.getBody() != null) {
             return Arrays.asList(response.getBody());  // converting it to List
         }

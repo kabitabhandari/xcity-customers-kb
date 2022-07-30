@@ -10,21 +10,21 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
 
-@Configuration
+//@Configuration
 public class RestTemplateConfig {
-    @Value("${downstream-services.timeout}")
-    private Long defaultApiTimeout;
-
-    @Bean
-    public RestTemplate myRestTemplate(RestTemplateBuilder restTemplateBuilder) {
-        return buildRestTemplateBuilder(restTemplateBuilder, defaultApiTimeout).build();
-    }
-
-    /*
-    If rest call is taking more than 5s then it will give timeout exception
-     */
-    private RestTemplateBuilder buildRestTemplateBuilder(RestTemplateBuilder restTemplateBuilder, Long defaultApiTimeout) {
-        return restTemplateBuilder.setReadTimeout(Duration.ofSeconds(defaultApiTimeout));
-    }
+//    @Value("${downstream-services.timeout}")
+//    private Long defaultApiTimeout;
+//
+//    @Bean
+//    public RestTemplate myRestTemplate(RestTemplateBuilder restTemplateBuilder) {
+//        return buildRestTemplateBuilder(restTemplateBuilder, defaultApiTimeout).build();
+//    }
+//
+//    /*
+//    If rest call is taking more than 5s then it will give timeout exception
+//     */
+//    private RestTemplateBuilder buildRestTemplateBuilder(RestTemplateBuilder restTemplateBuilder, Long defaultApiTimeout) {
+//        return restTemplateBuilder.setReadTimeout(Duration.ofSeconds(defaultApiTimeout));
+//    }
 
 }
