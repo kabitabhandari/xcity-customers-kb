@@ -2,11 +2,10 @@ package com.things.customer.xcitycustomerskb.pega.provider;
 
 import com.things.customer.xcitycustomerskb.Exception.GeneralException;
 import com.things.customer.xcitycustomerskb.config.RestTemplateConfig;
-import com.things.customer.xcitycustomerskb.pega.response.pegaresponse.*;
 import com.things.customer.xcitycustomerskb.pega.request.pega.PegaRequest;
 import com.things.customer.xcitycustomerskb.pega.request.pega.PlaceholderRequestContext;
 import com.things.customer.xcitycustomerskb.pega.request.wrapper.WrapperRequest;
-import com.things.customer.xcitycustomerskb.pega.response.pegaresponse.GnaPega;
+import com.things.customer.xcitycustomerskb.pega.response.pegaresponse.*;
 import com.things.customer.xcitycustomerskb.pega.response.wrapperresponse.*;
 import com.things.customer.xcitycustomerskb.pega.util.MappingUtility;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class WrapperProvider {
@@ -44,12 +42,8 @@ public class WrapperProvider {
         //create request payload to call Pega
         PegaRequest pegaRequestBody = getPegaRequest(wrapperRequest);
 
-        //call pega and get the response entity
-        ResponseEntity<PegaResponse> responseEntity = postCallPega(pegaRequestBody);
-
-        // convert response entity to List<PegaResponse>
-        List<PegaResponse> response = Arrays.asList(responseEntity.getBody());
-
+        //call pega and get List<PegaResponse>
+        List<PegaResponse> response = postCallPega(pegaRequestBody);
 
         //map PegaResponse to Wrapper
         WrapperResponse wrapperResponse = mapToInteraction(response);
@@ -64,13 +58,16 @@ public class WrapperProvider {
      * @param pegaRequestBody
      * @return ResponseEntity<PegaResponse>
      */
-    public ResponseEntity<PegaResponse> postCallPega(PegaRequest pegaRequestBody) {
+    public List<PegaResponse> postCallPega(PegaRequest pegaRequestBody) {
         String url = "http://localhost:8089/pega";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<PegaRequest> requestEntity = new HttpEntity<>(pegaRequestBody, headers);
         ResponseEntity<PegaResponse> response =
                 restTemplate.myRestTemplate(new RestTemplateBuilder()).postForEntity(url, requestEntity, PegaResponse.class);
-        return response;
+        if (response.getBody() != null) {
+            return Arrays.asList(response.getBody());  // converting it to List
+        }
+        return new ArrayList<>();   // do not return null, instead return an empty arraylist
     }
 
     /**
@@ -82,10 +79,7 @@ public class WrapperProvider {
     public WrapperResponse mapToInteraction(List<PegaResponse> pegaResponseList) {  //pegaResponseList comes as a list [...]
         try {
             WrapperResponse wrapperResponse = new WrapperResponse();
-
-            Optional<List<PegaResponse>> b = Optional.ofNullable(pegaResponseList);
-            System.out.println("b >>> " + b);
-            if(b.isPresent()){
+            if (pegaResponseList != null) {
                 for (PegaResponse eachPegaResponse : pegaResponseList) {
                     // Iterate each item from incoming object
                     if (eachPegaResponse.getStatus().equals("OK") && eachPegaResponse.getPegaMovies() != null) {
