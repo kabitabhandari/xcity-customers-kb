@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -66,9 +67,10 @@ public class WrapperProvider {
         ResponseEntity<PegaResponse> response =
                 restTemplate.postForEntity(url, requestEntity, PegaResponse.class);
         if (response.getBody() != null) {
-            return Arrays.asList(response.getBody());  // converting it to List
+            return Collections.singletonList(response.getBody());  // converting it to List, another way: Arrays.asList()
+        }else {
+            return new ArrayList<>();   // do not return null, instead return an empty arraylist, to avoid null pointer exception.
         }
-        return new ArrayList<>();   // do not return null, instead return an empty arraylist
     }
 
     /**

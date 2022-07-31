@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -38,17 +39,17 @@ class WrapperProviderTest {
 
     @Test
     public void postCallPegaShouldReturnPegaResponseList() {
-        ResponseEntity<PegaResponse> postResponse = new ResponseEntity(mockPegaResponseFromResponseEntity(), HttpStatus.OK);
-
-        when(restTemplate
-                .postForEntity(
+        ResponseEntity<PegaResponse> responseEntity = new ResponseEntity<>(mockPegaResponseFromResponseEntity(), HttpStatus.OK);
+        List<PegaResponse> expectedResponse = Collections.singletonList(responseEntity.getBody());
+        when(restTemplate.postForEntity(
                         ArgumentMatchers.anyString(),  //url
                         ArgumentMatchers.any(),        //request body
                         ArgumentMatchers.<Class<PegaResponse>>any())  //response class
-        ).thenReturn(postResponse);
+        ).thenReturn(responseEntity);
 
         List<PegaResponse> actualResponse = this.wrapperProvider.postCallPega(mockPegaRequestBody());
         System.out.println(actualResponse);
+        Assertions.assertEquals(expectedResponse,actualResponse);
     }
 
     @Test
