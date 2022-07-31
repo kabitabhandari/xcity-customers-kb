@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/cars")
@@ -32,12 +33,12 @@ public class CarController {
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Car RetrieveCarInfoFromCache(@PathVariable String id) {
-
-        Car result = cacheClient.get(id);
-        if (result == null) {
+        Optional<Car> result = cacheClient.get(id);
+        if (result.isPresent()) {
+            return result.get();
+        } else {
             throw new MapIsEmptyException("map is empty");
         }
-        return result;
     }
 
 

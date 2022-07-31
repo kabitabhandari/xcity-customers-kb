@@ -8,6 +8,8 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class CacheClient {
 
@@ -26,13 +28,13 @@ public class CacheClient {
          */
     }
 
-    public Car get(String key) {
+    public Optional<Car> get(String key) {
 
         IMap<String, Car> map = hazelcastInstance.getMap(HAZEL_CAST_CACHE_NAME);
         if (map.size() == 0) {
-            return null;
+            return Optional.empty();
         }
-        return map.get(key);
+        return Optional.ofNullable(map.get(key));
     }
 
     public Config createConfig() {
