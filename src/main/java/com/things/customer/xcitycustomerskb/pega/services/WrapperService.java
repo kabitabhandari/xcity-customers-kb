@@ -1,7 +1,7 @@
 package com.things.customer.xcitycustomerskb.pega.services;
 
-import com.things.customer.xcitycustomerskb.pega.response.wrapperresponse.WrapperResponse;
 import com.things.customer.xcitycustomerskb.pega.provider.WrapperProvider;
+import com.things.customer.xcitycustomerskb.pega.response.wrapperresponse.WrapperResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

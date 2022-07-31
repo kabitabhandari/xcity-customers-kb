@@ -3,14 +3,13 @@ package com.things.customer.xcitycustomerskb.provider;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.things.customer.xcitycustomerskb.Exception.InternalServerException;
-import com.things.customer.xcitycustomerskb.config.RestTemplateConfig;
 import com.things.customer.xcitycustomerskb.model.ModelForCustomerCareUnit;
 import com.things.customer.xcitycustomerskb.model.NewCustomerDetails;
 import com.things.customer.xcitycustomerskb.model.NewCustomerRequestBody;
 import com.things.customer.xcitycustomerskb.responsemodel.CustomerDetailsResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -33,7 +32,7 @@ public class CustomerDetailsProvider {
 
     public CustomerDetailsProvider(
             @Value("${mockserver_base_url}") String MockserverBaseUrl,
-            RestTemplate restTemplate) {
+            @Qualifier("general") RestTemplate restTemplate) {
         this.MOCK_BASE_URL = MockserverBaseUrl;
         this.restTemplate = restTemplate;
     }
@@ -92,12 +91,12 @@ public class CustomerDetailsProvider {
 
     }
 
-    public ResponseEntity<NewCustomerDetails> postCustomer(NewCustomerRequestBody requestBody){
+    public ResponseEntity<NewCustomerDetails> postCustomer(NewCustomerRequestBody requestBody) {
         String url = buildUrlForPostCustomer().toUriString();
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<NewCustomerRequestBody> requestEntity = new HttpEntity<>(requestBody, headers);
         ResponseEntity<NewCustomerDetails> response =
-                restTemplate.postForEntity(url, requestEntity,  NewCustomerDetails.class);
+                restTemplate.postForEntity(url, requestEntity, NewCustomerDetails.class);
         return response;
 
 
@@ -151,7 +150,6 @@ public class CustomerDetailsProvider {
     }
 
 
-
     /**
      * gives json string out of response 'serialization'
      *
@@ -160,7 +158,7 @@ public class CustomerDetailsProvider {
     private void serializeResponseForWireProcess(ResponseEntity<CustomerDetailsResponse[]> response) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            System.out.println("objectmapper = "+ objectMapper);
+            System.out.println("objectmapper = " + objectMapper);
             String d = objectMapper.writeValueAsString(response.getBody());
             System.out.println("json of response object >>> " + d);
         } catch (JsonProcessingException e) {

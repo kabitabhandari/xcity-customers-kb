@@ -23,12 +23,12 @@ public class Futures {
 
 
     // eg 1: creating thread pool
-    public static Future<String> calculateAsync(){
+    public static Future<String> calculateAsync() {
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
 
         Executors.newCachedThreadPool().submit(() -> {
             System.out.println("Sleeping ...");
-                Thread.sleep(5000);
+            Thread.sleep(5000);
             System.out.println("Completed Sleeping :P");
 
             completableFuture.complete(" >>> Hello");
@@ -40,7 +40,7 @@ public class Futures {
 
     // eg 2: creating async method
     @Async
-    public Future<List<Integer>> calculateAsyncInt(){
+    public Future<List<Integer>> calculateAsyncInt() {
         List<Integer> numberList = new ArrayList<>();
         numberList.add(1);
         numberList.add(33);
@@ -50,7 +50,6 @@ public class Futures {
         return intList;
 
     }
-
 
 
 }

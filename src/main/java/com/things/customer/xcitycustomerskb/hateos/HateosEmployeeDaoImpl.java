@@ -88,14 +88,14 @@ public class HateosEmployeeDaoImpl extends JdbcDaoSupport implements HateosEmplo
                     Random rand = new Random();
                     // Generate random integers in range 0 to 9
                     int random = rand.nextInt(10);
-                    if(random <5){
+                    if (random < 5) {
                         JobDetail cachedResult = cache.getFromCache(String.valueOf(id));
                         if (cachedResult.getState() != null && cachedResult.getState().equals("PROCESSING")) { // value present in cache from line 120
                             JobDetail jobDetail = new JobDetail(id, JobDetail.JobState.PROCESSING.name());
                             emp.setStatus(jobDetail);
                             return emp;
                         }
-                    }else{
+                    } else {
                         JobDetail cachedResult = cache.getFromCache(String.valueOf(id));
                         if (cachedResult.getState() != null && cachedResult.getState().equals("PROCESSING")) { // value present in cache from line 120
                             JobDetail jobDetail = new JobDetail(id, JobDetail.JobState.COMPLETED.name());
@@ -103,8 +103,8 @@ public class HateosEmployeeDaoImpl extends JdbcDaoSupport implements HateosEmplo
                             return emp;
                         }
                     }
-                } catch(NullPointerException ex){
-                    HateosEmployee empe =new HateosEmployee();
+                } catch (NullPointerException ex) {
+                    HateosEmployee empe = new HateosEmployee();
                     JobDetail jobDetail = new JobDetail(id, JobDetail.JobState.FAILED.name());
                     empe.setStatus(jobDetail);
                     return empe;
@@ -121,7 +121,7 @@ public class HateosEmployeeDaoImpl extends JdbcDaoSupport implements HateosEmplo
         // for adding self link.
         Link selfLink = WebMvcLinkBuilder.linkTo(JobDetail.class).slash("hateos").slash("v1").slash(id).withSelfRel();
         jobDetail.add(selfLink);
-        cache.putToCache(String.valueOf(id),jobDetail);
+        cache.putToCache(String.valueOf(id), jobDetail);
         System.out.println("getting value from hateos cache: " + cache.getFromCache(String.valueOf(id)));
         return jobDetail;
     }

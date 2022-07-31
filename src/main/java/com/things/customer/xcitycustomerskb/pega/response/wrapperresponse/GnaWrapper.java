@@ -10,5 +10,4 @@ public class GnaWrapper {
     private List<String> genres;
 
 
-
 }

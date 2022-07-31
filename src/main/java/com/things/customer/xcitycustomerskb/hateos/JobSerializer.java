@@ -3,7 +3,6 @@ package com.things.customer.xcitycustomerskb.hateos;
 import com.hazelcast.nio.ObjectDataInput;
 import com.hazelcast.nio.ObjectDataOutput;
 import com.hazelcast.nio.serialization.StreamSerializer;
-import com.things.customer.xcitycustomerskb.embeddedcachetopology.Car;
 
 import java.io.IOException;
 

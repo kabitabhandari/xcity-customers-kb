@@ -14,7 +14,7 @@ public class CacheClientForJobDetails {
     public static final String HAZEL_CAST_CACHE_NAME = "job-details";
     private final HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance(createConfig());
 
-    public JobDetail putToCache(String key, JobDetail detail){
+    public JobDetail putToCache(String key, JobDetail detail) {
         IMap<String, JobDetail> map = hazelcastInstance.getMap(HAZEL_CAST_CACHE_NAME);
         return map.putIfAbsent(key, detail);
         /*
@@ -26,10 +26,10 @@ public class CacheClientForJobDetails {
          */
     }
 
-    public JobDetail getFromCache(String key){
+    public JobDetail getFromCache(String key) {
 
         IMap<String, JobDetail> map = hazelcastInstance.getMap(HAZEL_CAST_CACHE_NAME);
-        if(map.size() == 0) {
+        if (map.size() == 0) {
             return null;
         }
         return map.get(key);
@@ -43,7 +43,7 @@ public class CacheClientForJobDetails {
     }
 
     private SerializerConfig serializerConfig() {
-        return  new SerializerConfig()
+        return new SerializerConfig()
                 .setImplementation(new JobSerializer())
                 .setTypeClass(JobDetail.class);
     }

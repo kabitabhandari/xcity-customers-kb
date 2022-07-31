@@ -1,14 +1,13 @@
 package com.things.customer.xcitycustomerskb.pega.provider;
 
 import com.things.customer.xcitycustomerskb.Exception.GeneralException;
-import com.things.customer.xcitycustomerskb.config.RestTemplateConfig;
 import com.things.customer.xcitycustomerskb.pega.request.pega.PegaRequest;
 import com.things.customer.xcitycustomerskb.pega.request.pega.PlaceholderRequestContext;
 import com.things.customer.xcitycustomerskb.pega.request.wrapper.WrapperRequest;
 import com.things.customer.xcitycustomerskb.pega.response.pegaresponse.*;
 import com.things.customer.xcitycustomerskb.pega.response.wrapperresponse.*;
 import com.things.customer.xcitycustomerskb.pega.util.MappingUtility;
-import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class WrapperProvider {
     private final MappingUtility mapUtil;
     private final RestTemplate restTemplate;
 
-    public WrapperProvider(MappingUtility mapUtil, RestTemplate restTemplate) {
+    public WrapperProvider(MappingUtility mapUtil, @Qualifier("general") RestTemplate restTemplate) {
         this.mapUtil = mapUtil;
         this.restTemplate = restTemplate;
     }
@@ -68,7 +66,7 @@ public class WrapperProvider {
                 restTemplate.postForEntity(url, requestEntity, PegaResponse.class);
         if (response.getBody() != null) {
             return Collections.singletonList(response.getBody());  // converting it to List, another way: Arrays.asList()
-        }else {
+        } else {
             return new ArrayList<>();   // do not return null, instead return an empty arraylist, to avoid null pointer exception.
         }
     }

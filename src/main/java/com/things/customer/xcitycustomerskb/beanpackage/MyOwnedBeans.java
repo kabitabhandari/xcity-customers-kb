@@ -10,14 +10,14 @@ import java.math.BigDecimal;
 public class MyOwnedBeans {
 
     @Value("${a}")
-    private   Integer a;
+    private Integer a;
 
     @Value("${b}")
-    private   Integer b;
+    private Integer b;
 
     @Bean
-    public BigDecimal answer(){
-        return new BigDecimal(a+b);
+    public BigDecimal answer() {
+        return new BigDecimal(a + b);
     }
 
 

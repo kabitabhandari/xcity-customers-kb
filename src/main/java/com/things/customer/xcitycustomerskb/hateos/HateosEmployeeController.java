@@ -1,7 +1,6 @@
 package com.things.customer.xcitycustomerskb.hateos;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

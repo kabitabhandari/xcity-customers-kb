@@ -13,12 +13,12 @@ public class MappingUtility {
         this.objectMapper = objectMapper;
     }
 
-    public WrapperRequest mapStringToCreateWrapperRequest(String stringRequestFromPostman)  {
+    public WrapperRequest mapStringToCreateWrapperRequest(String stringRequestFromPostman) {
         WrapperRequest outgoingObject = null;
 
-        try{
+        try {
             outgoingObject = objectMapper.readValue(stringRequestFromPostman, WrapperRequest.class);
-        }catch(JsonProcessingException ex){
+        } catch (JsonProcessingException ex) {
             ex.getMessage();
         }
         return outgoingObject;

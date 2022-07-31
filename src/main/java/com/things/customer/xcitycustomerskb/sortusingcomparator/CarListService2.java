@@ -34,7 +34,7 @@ public class CarListService2 {
         return rawList;
     }
 
-    public List<Car2> sortingCars2Approach2(){
+    public List<Car2> sortingCars2Approach2() {
         List<Car2> rawList2 = CarHashMap2.listOfCars2();
         System.out.println("rawlist before sort (using comparator)  " + rawList2);
 

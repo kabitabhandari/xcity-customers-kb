@@ -17,13 +17,12 @@ import java.util.List;
 @Component
 public class CustomerDetailsService {
 
-    @Value("${max_retry_attempts_to_call_pega}")  // @value could be put in constructor to look clean
-    private   Integer max_retry_2;
-
     private final CustomerDetailsProvider customerDetailsProvider;
     private final CustomerDetailsMapper customerDetailsMapper;
     private final MyOwnedBeans myOwnedBeans;
-    private  int max_retry;
+    @Value("${max_retry_attempts_to_call_pega}")  // @value could be put in constructor to look clean
+    private Integer max_retry_2;
+    private final int max_retry;
 
     public CustomerDetailsService(
             CustomerDetailsProvider customerDetailsProvider,

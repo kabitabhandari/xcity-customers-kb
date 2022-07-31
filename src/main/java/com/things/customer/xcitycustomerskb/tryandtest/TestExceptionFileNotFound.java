@@ -8,46 +8,17 @@ import java.io.FileReader;
 public class TestExceptionFileNotFound {
     public static void main(String[] args) throws FileNotFoundException {
         TestExceptionFileNotFound.fi();
-      // exceptionKB();
+        // exceptionKB();
 
-       TestExceptionFileNotFound test = new TestExceptionFileNotFound();
-       test.exceptionKB();
+        TestExceptionFileNotFound test = new TestExceptionFileNotFound();
+        test.exceptionKB();
 
 
     }
-
-
-    private  void exceptionKB() throws FileNotFoundException {
-        System.out.println("start");
-
-        File file = new File(
-                "C:\\Users\\pankaj\\Desktop\\test.txt");
-
-
-        try {
-            BufferedReader br
-                    = new BufferedReader(new FileReader(file));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("end");
-
-        System.out.println(String.join("|", "hip", "hop"));
-
-    }
-
-
-
-
-
-
-
-
 
     private static void fi() {
-        FunctionalInterfaceKB fI1  = new  FunctionalInterfaceKB(){
-            public void disp(){
+        FunctionalInterfaceKB fI1 = new FunctionalInterfaceKB() {
+            public void disp() {
                 System.out.println("this is an old style of implementing functional interface.");
             }
         };
@@ -78,6 +49,25 @@ public class TestExceptionFileNotFound {
         ti1.m4();
     }
 
+    private void exceptionKB() throws FileNotFoundException {
+        System.out.println("start");
+
+        File file = new File(
+                "C:\\Users\\pankaj\\Desktop\\test.txt");
+
+
+        try {
+            BufferedReader br
+                    = new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("end");
+
+        System.out.println(String.join("|", "hip", "hop"));
+
+    }
 
 
 }

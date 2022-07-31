@@ -42,14 +42,14 @@ class WrapperProviderTest {
         ResponseEntity<PegaResponse> responseEntity = new ResponseEntity<>(mockPegaResponseFromResponseEntity(), HttpStatus.OK);
         List<PegaResponse> expectedResponse = Collections.singletonList(responseEntity.getBody());
         when(restTemplate.postForEntity(
-                        ArgumentMatchers.anyString(),  //url
-                        ArgumentMatchers.any(),        //request body
-                        ArgumentMatchers.<Class<PegaResponse>>any())  //response class
+                ArgumentMatchers.anyString(),  //url
+                ArgumentMatchers.any(),        //request body
+                ArgumentMatchers.<Class<PegaResponse>>any())  //response class
         ).thenReturn(responseEntity);
 
         List<PegaResponse> actualResponse = this.wrapperProvider.postCallPega(mockPegaRequestBody());
         System.out.println(actualResponse);
-        Assertions.assertEquals(expectedResponse,actualResponse);
+        Assertions.assertEquals(expectedResponse, actualResponse);
     }
 
     @Test

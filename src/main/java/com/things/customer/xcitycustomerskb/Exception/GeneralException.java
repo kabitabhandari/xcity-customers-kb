@@ -16,6 +16,7 @@ public class GeneralException extends RuntimeException {
     public GeneralException(Exception e) {
         super(e);
     }
+
     public GeneralException(String message, Exception e) {
         super(message, e);
     }
@@ -24,11 +25,11 @@ public class GeneralException extends RuntimeException {
         super(message);
         this.status = status;
     }
+
     public GeneralException(int status, String message, Exception e) {
         super(message, e);
         this.status = status;
     }
-
 
 
 }

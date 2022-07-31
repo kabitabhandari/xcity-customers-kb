@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class Car  implements Serializable, Comparable<Car> {
+public class Car implements Serializable, Comparable<Car> {
     //Note: Since we have access to this car class, we are making it extend Comparable Interface when we need it, but what if this class was only readable and not writeable?
     // Think? may be use comparator in such case?
     private String type;

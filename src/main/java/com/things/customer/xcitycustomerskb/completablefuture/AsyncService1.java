@@ -3,6 +3,7 @@ package com.things.customer.xcitycustomerskb.completablefuture;
 import com.things.customer.xcitycustomerskb.Exception.InternalServerException;
 import com.things.customer.xcitycustomerskb.responsemodel.CustomerDetailsResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Async;
@@ -23,7 +24,7 @@ public class AsyncService1 {
     private final RestTemplate restTemplate;
 
     public AsyncService1(@Value("${mockserver_base_url}") String mock_base_url,
-                         RestTemplate restTemplate) {
+                         @Qualifier("general") RestTemplate restTemplate) {
         MOCK_BASE_URL = mock_base_url;
         this.restTemplate = restTemplate;
     }

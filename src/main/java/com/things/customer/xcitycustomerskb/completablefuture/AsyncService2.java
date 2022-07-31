@@ -3,9 +3,9 @@ package com.things.customer.xcitycustomerskb.completablefuture;
 import com.things.customer.xcitycustomerskb.Exception.InternalServerException;
 import com.things.customer.xcitycustomerskb.responsemodel.CustomerDetailsResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
@@ -15,7 +15,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 @Service
 @Slf4j
@@ -25,7 +24,7 @@ public class AsyncService2 {
     private final RestTemplate restTemplate;
 
     public AsyncService2(@Value("${mockserver_base_url}") String mock_base_url,
-                         RestTemplate restTemplate) {
+                         @Qualifier("general") RestTemplate restTemplate) {
         MOCK_BASE_URL = mock_base_url;
         this.restTemplate = restTemplate;
     }
@@ -55,7 +54,7 @@ public class AsyncService2 {
             return null;
 
         });
-        return completableFuture ;
+        return completableFuture;
 
     }
 

@@ -1,6 +1,5 @@
 package com.things.customer.xcitycustomerskb.hateos;
 
-import com.things.customer.xcitycustomerskb.hazelcastcachefordatabasecall.Employee;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,7 +8,9 @@ import java.util.List;
 @Service
 public interface HateosEmployeeService {
     List<HateosEmployee> getAllEmployees();
+
     HateosEmployee getEmployeeById(Integer id);
+
     JobDetail getEmployeeByIdUsingJobDetail(Integer id);
 
 }

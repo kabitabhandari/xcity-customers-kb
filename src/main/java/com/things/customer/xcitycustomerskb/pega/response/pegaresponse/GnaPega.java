@@ -9,9 +9,8 @@ import java.util.List;
 public class GnaPega {
     @JsonProperty("Genres")
     private List<String> Genres;
-     @JsonProperty("Actors")
+    @JsonProperty("Actors")
     private List<PegaActor> pegaActors;
-
 
 
 }

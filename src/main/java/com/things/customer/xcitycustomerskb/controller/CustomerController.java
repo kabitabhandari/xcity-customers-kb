@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 public class CustomerController {
-    private static final String GET_SONGS = "v1/songs" ;
+    private static final String GET_SONGS = "v1/songs";
     private final String GET_CUSTOMER_DETAILS = "v1/mps/knowing/customers";
     private final String GET_EACH_CUSTOMER_DETAILS = "v1/mps/knowing/customer/{id}/details";
     private final String CREATE_NEW_CUSTOMER = "v1/mps/knowing/customer/create";
@@ -23,7 +23,6 @@ public class CustomerController {
     }
 
     /**
-     *
      * @param memberChannel
      * @return
      * @throws Exception
@@ -38,7 +37,6 @@ public class CustomerController {
     }
 
     /**
-     *
      * @param memberChannel
      * @param customerId
      * @return
@@ -55,6 +53,7 @@ public class CustomerController {
 
     /**
      * Gives the song by Denver..!
+     *
      * @return String
      */
     @GetMapping(path = GET_SONGS)
@@ -64,8 +63,8 @@ public class CustomerController {
 
     /**
      * Posts a new customer id and meta data in the system
-     * @return String
      *
+     * @return String
      */
     @PostMapping(path = CREATE_NEW_CUSTOMER)
     public ResponseEntity<NewCustomerDetails> postNewCustomer(@RequestBody NewCustomerRequestBody requestBody) {

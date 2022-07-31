@@ -18,22 +18,15 @@ import java.util.stream.Collectors;
 
 
 /**
-
- Thread name for type 1 in controller ==> http-nio-8080-exec-3
- Thread name for async annotation in service class with @Async annotation ==> task-1
- Thread name for async annotation  in service class with @Async annotation ==> task-1
-
-
- Thread name for non-async annotation outside thread pool==> http-nio-8080-exec-5
- Thread name for non-async annotation in controller ==> http-nio-8080-exec-5
- Thread name for non-async annotation INSIDE thread pool==> pool-1-thread-1
-
+ * Thread name for type 1 in controller ==> http-nio-8080-exec-3
+ * Thread name for async annotation in service class with @Async annotation ==> task-1
+ * Thread name for async annotation  in service class with @Async annotation ==> task-1
+ * <p>
+ * <p>
+ * Thread name for non-async annotation outside thread pool==> http-nio-8080-exec-5
+ * Thread name for non-async annotation in controller ==> http-nio-8080-exec-5
+ * Thread name for non-async annotation INSIDE thread pool==> pool-1-thread-1
  */
-
-
-
-
-
 
 
 @RestController
@@ -65,7 +58,6 @@ public class FutureController1 {
 
         //joining all futures when async service is complete
         CompletableFuture.allOf(completableFutureList).join();
-
 
 
         //Use get() method to get all the lists from completable future

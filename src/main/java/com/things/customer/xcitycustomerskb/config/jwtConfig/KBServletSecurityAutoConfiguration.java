@@ -4,8 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
-import javax.servlet.http.HttpServletResponse;
-
 @Configuration
 public class KBServletSecurityAutoConfiguration {
     public KBServletSecurityAutoConfiguration() {

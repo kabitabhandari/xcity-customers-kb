@@ -3,6 +3,7 @@ package com.things.customer.xcitycustomerskb.pega.request.pega;
 import lombok.Data;
 
 import java.util.List;
+
 @Data
 public class PegaRequest {
     private String name;

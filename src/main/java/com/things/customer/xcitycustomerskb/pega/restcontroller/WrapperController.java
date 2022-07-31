@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+
 @RestController
 public class WrapperController {
     //TODO start with /free/ --> so wont go thru security
-    private static final String GAAP = "free/pega" ;
+    private static final String GAAP = "free/pega";
     private final WrapperService WrapperService;
 
     public WrapperController(WrapperService WrapperService) {
@@ -21,7 +22,7 @@ public class WrapperController {
 
 
     @PostMapping(path = GAAP)
-    public ResponseEntity<WrapperResponse> getWrapperMoviesUsingPOST(@Valid @RequestBody String stringRequestFromPostman){
-    return WrapperService.getWrapperMovies(stringRequestFromPostman);
+    public ResponseEntity<WrapperResponse> getWrapperMoviesUsingPOST(@Valid @RequestBody String stringRequestFromPostman) {
+        return WrapperService.getWrapperMovies(stringRequestFromPostman);
     }
 }

@@ -1,9 +1,9 @@
 package com.things.customer.xcitycustomerskb.controller;
 
+import com.things.customer.xcitycustomerskb.config.jwtConfig.JwtTokenUtil;
 import com.things.customer.xcitycustomerskb.jwtmodel.JwtRequestModel;
 import com.things.customer.xcitycustomerskb.jwtmodel.JwtResponseModel;
 import com.things.customer.xcitycustomerskb.service.JwtUserDetailsService;
-import com.things.customer.xcitycustomerskb.config.jwtConfig.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

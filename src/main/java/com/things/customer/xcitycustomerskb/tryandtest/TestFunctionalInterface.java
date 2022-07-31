@@ -1,4 +1,5 @@
 package com.things.customer.xcitycustomerskb.tryandtest;
+
 public class TestFunctionalInterface {
     public static void main(String... args) {
         //implementing any interface that is not a functional interface:
@@ -31,7 +32,6 @@ public class TestFunctionalInterface {
         FunctionalInterfaceKB fi2 = () -> {
             System.out.println("I am from lamda implementation");
         };
-
 
 
         fi1.disp();

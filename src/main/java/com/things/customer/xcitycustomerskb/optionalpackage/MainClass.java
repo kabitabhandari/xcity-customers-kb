@@ -8,7 +8,7 @@ public class MainClass {
 
 
         //approach 1
-        if(myCat.isPresent()){
+        if (myCat.isPresent()) {
             System.out.println("Age = " + myCat.get().getAge());
         } else {
             System.out.println(0);
@@ -32,7 +32,7 @@ public class MainClass {
     }
 
 
-    private static Optional<Cat> findCatByName(String name){
+    private static Optional<Cat> findCatByName(String name) {
         //Cat myCat = new Cat(name, 3);
         Cat myCat = null;
 
@@ -41,10 +41,9 @@ public class MainClass {
         // if myCat is null, then ofNullable(myCat) will create an empty optional, note: it won't proceed with null.
         return Optional.ofNullable(myCat); // It will either give optional with value or give empty optional.
 
-       // return Optional.of(myCat); // If you for sure know that myCat is not null then use Optional.of()
+        // return Optional.of(myCat); // If you for sure know that myCat is not null then use Optional.of()
 
     }
-
 
 
     // where to use optional?

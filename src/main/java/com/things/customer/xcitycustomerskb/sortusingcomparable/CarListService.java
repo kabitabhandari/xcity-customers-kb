@@ -12,7 +12,7 @@ import java.util.List;
 
 // using comparable
 @Service
-public class CarListService{
+public class CarListService {
 
     public List<Car> sortingCars() {
         // Make sure Car class is already implementing Comparable Interface otherwise you get an error while using  Collections.sort(rawList) in line below.
@@ -22,7 +22,6 @@ public class CarListService{
 
         Collections.sort(rawList);
         System.out.println("rawlist after sort  (using comparable) " + rawList);
-
 
 
         //Note: with Integer class,it works directly without having to implement anything inside Integer class? No. Because Integer class is by default implementing Comparable Interface. Click and see.
@@ -35,7 +34,6 @@ public class CarListService{
 
         Collections.sort(randomInteger);
         System.out.println("randomInteger after (sorting are)  " + randomInteger);
-
 
 
         return rawList;

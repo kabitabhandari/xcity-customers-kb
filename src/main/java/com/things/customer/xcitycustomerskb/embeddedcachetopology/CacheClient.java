@@ -14,7 +14,7 @@ public class CacheClient {
     public static final String HAZEL_CAST_CACHE_NAME = "cars";
     private final HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance(createConfig());
 
-    public Car put(String key, Car value){
+    public Car put(String key, Car value) {
         IMap<String, Car> map = hazelcastInstance.getMap(HAZEL_CAST_CACHE_NAME);
         return map.putIfAbsent(key, value);
         /*
@@ -26,10 +26,10 @@ public class CacheClient {
          */
     }
 
-    public Car get(String key){
+    public Car get(String key) {
 
         IMap<String, Car> map = hazelcastInstance.getMap(HAZEL_CAST_CACHE_NAME);
-        if(map.size() == 0) {
+        if (map.size() == 0) {
             return null;
         }
         return map.get(key);
@@ -43,7 +43,7 @@ public class CacheClient {
     }
 
     private SerializerConfig serializerConfig() {
-        return  new SerializerConfig()
+        return new SerializerConfig()
                 .setImplementation(new CarSerializer())
                 .setTypeClass(Car.class);
     }
