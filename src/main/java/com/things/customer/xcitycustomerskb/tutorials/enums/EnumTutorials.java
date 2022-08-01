@@ -9,7 +9,7 @@ public class EnumTutorials {
         System.out.println("level >>> " + level);
 
         for (Breakfast b : Breakfast.values()) {
-            System.out.println(b + " " + b.levelOfDeliciousness);
+            System.out.println("breakfast: " + b + " levelOfDeliciousness =  " + b.levelOfDeliciousness + " price = " + b.price );
         }
     }
 }

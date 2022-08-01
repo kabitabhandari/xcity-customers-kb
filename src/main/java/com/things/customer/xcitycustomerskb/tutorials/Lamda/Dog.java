@@ -1,4 +1,4 @@
-package com.things.customer.xcitycustomerskb.tutorials;
+package com.things.customer.xcitycustomerskb.tutorials.Lamda;
 
 public class Dog implements Printable {
     public String name;

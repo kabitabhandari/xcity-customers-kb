@@ -1,4 +1,4 @@
-package com.things.customer.xcitycustomerskb.tutorials;
+package com.things.customer.xcitycustomerskb.tutorials.Lamda;
 
 @FunctionalInterface
 public interface Printable {
