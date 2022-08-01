@@ -1,6 +1,4 @@
-package com.things.customer.xcitycustomerskb.generics;
-
-import java.util.Objects;
+package com.things.customer.xcitycustomerskb.tutorials.generics;
 
 public class Printer<T> {
 

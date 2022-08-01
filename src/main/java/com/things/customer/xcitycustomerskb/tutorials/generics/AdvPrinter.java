@@ -1,4 +1,4 @@
-package com.things.customer.xcitycustomerskb.generics;
+package com.things.customer.xcitycustomerskb.tutorials.generics;
 
 public class AdvPrinter<T extends Animal> {  // bounded generic
     T printThis;

@@ -1,16 +1,14 @@
-package com.things.customer.xcitycustomerskb.generics;
+package com.things.customer.xcitycustomerskb.tutorials.generics;
 
-public class Rabbit extends Animal {
+public class Monkey {
 
     public String name;
     public int age;
 
-    public Rabbit() {
-        super("Rain Forest");
+    public Monkey() {
     }
 
-    public Rabbit(String name, int age) {
-        super("Rain Forest");
+    public Monkey(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -18,7 +16,7 @@ public class Rabbit extends Animal {
 
     @Override
     public String toString() {
-        return "Rabbit{" +
+        return "Monkey{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
