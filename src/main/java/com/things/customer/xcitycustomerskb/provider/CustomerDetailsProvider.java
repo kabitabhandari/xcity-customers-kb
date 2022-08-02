@@ -11,27 +11,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
-import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.util.UriBuilder;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
-import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Component
@@ -115,7 +107,8 @@ public class CustomerDetailsProvider {
 
 
     }
-    public NewCustomerDetails postCustomerUsingWebClient(NewCustomerRequestBody requestBody){
+
+    public NewCustomerDetails postCustomerUsingWebClient(NewCustomerRequestBody requestBody) {
         MultiValueMap<String, String> requestBodyUsingMultiValueMap = new LinkedMultiValueMap<>();
         requestBodyUsingMultiValueMap.add("value1", "america1");
         requestBodyUsingMultiValueMap.add("value2", "nepal2");
@@ -123,7 +116,7 @@ public class CustomerDetailsProvider {
         String url = "http://localhost:8089/mock/cust/new";
         Mono<NewCustomerDetails> result = WebClient.create().post()
                 .uri(url)
-                .headers(this::addCustomersHeaders)
+                .headers(h -> addCustomersHeaders(h))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .body(Mono.just(requestBody), NewCustomerRequestBody.class)
@@ -131,14 +124,14 @@ public class CustomerDetailsProvider {
                 .bodyToMono(NewCustomerDetails.class);
 
         NewCustomerDetails details = result.block();
-        if(details != null){
+        if (details != null) {
             return details;
         }
         return new NewCustomerDetails();
     }
 
 
-    public NewCustomerDetails post(){
+    public NewCustomerDetails post() {
         MultiValueMap<String, String> requestBodyUsingMultiValueMap = new LinkedMultiValueMap<>();
         requestBodyUsingMultiValueMap.add("value1", "america1");
         requestBodyUsingMultiValueMap.add("value2", "nepal2");
@@ -146,7 +139,14 @@ public class CustomerDetailsProvider {
         String url = "http://localhost:8089/mock/cust/new";
         Mono<NewCustomerDetails> result = WebClient.create().post()
                 .uri(url)
-                .headers(this::addCustomersHeaders)
+                .headers(new Consumer<HttpHeaders>() {
+                    @Override
+                    public void accept(HttpHeaders httpHeaders) {
+                        httpHeaders.set("header1", "value1");
+                        httpHeaders.set("header2", "value2");
+                        httpHeaders.set("header3", "value3");
+                    }
+                })
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromFormData(requestBodyUsingMultiValueMap))
@@ -154,7 +154,7 @@ public class CustomerDetailsProvider {
                 .bodyToMono(NewCustomerDetails.class);
 
         NewCustomerDetails details = result.block();
-        if(details != null){
+        if (details != null) {
             return details;
         }
         return new NewCustomerDetails();
