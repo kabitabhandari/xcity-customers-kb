@@ -11,6 +11,7 @@ import com.things.customer.xcitycustomerskb.util.Constants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -58,8 +59,9 @@ public class CustomerDetailsService {
                 "West Virginia, Mountain momma, take me home, Country roads";
     }
 
-    public ResponseEntity<NewCustomerDetails> getNew(NewCustomerRequestBody requestBody) {
-        ResponseEntity<NewCustomerDetails> response = customerDetailsProvider.postCustomer(requestBody);
+    public NewCustomerDetails getNew(NewCustomerRequestBody requestBody) {
+        //NewCustomerDetails response = customerDetailsProvider.postCustomerUsingRestTemplate(requestBody);
+        NewCustomerDetails response = customerDetailsProvider.postCustomerUsingWebClient(requestBody);
         return response;
     }
 }

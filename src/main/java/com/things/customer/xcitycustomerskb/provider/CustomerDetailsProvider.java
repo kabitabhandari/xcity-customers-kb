@@ -12,12 +12,24 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.util.UriBuilder;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
+import reactor.core.Disposable;
+import reactor.core.publisher.Mono;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Component
@@ -91,15 +103,43 @@ public class CustomerDetailsProvider {
 
     }
 
-    public ResponseEntity<NewCustomerDetails> postCustomer(NewCustomerRequestBody requestBody) {
+    public NewCustomerDetails postCustomerUsingRestTemplate(NewCustomerRequestBody requestBody) {
         String url = buildUrlForPostCustomer().toUriString();
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<NewCustomerRequestBody> requestEntity = new HttpEntity<>(requestBody, headers);
         ResponseEntity<NewCustomerDetails> response =
                 restTemplate.postForEntity(url, requestEntity, NewCustomerDetails.class);
-        return response;
+        return response.getBody();
 
 
+    }
+    public NewCustomerDetails postCustomerUsingWebClient(NewCustomerRequestBody requestBody){
+        MultiValueMap<String, String> requestBodyUsingMultiValueMap = new LinkedMultiValueMap<>();
+        requestBodyUsingMultiValueMap.add("value1", "america");
+        requestBodyUsingMultiValueMap.add("value2", "nepal");
+
+        Mono<NewCustomerDetails> result =
+                WebClient.create("http://localhost:8089/mock")
+                .post()
+                .uri(new Function<UriBuilder, URI>() {
+                    @Override
+                    public URI apply(UriBuilder uriBuilder) {
+                        return uriBuilder.path("/cust").path("/new").build();
+                    }
+                })
+                .header("header-name-1", "header-value-1")
+                .header("header-name-2", "header-value-2")
+                .accept(MediaType.APPLICATION_JSON)
+                //.body(BodyInserters.fromValue(requestBody))
+                .bodyValue(requestBodyUsingMultiValueMap)
+                .retrieve()
+                .bodyToMono(NewCustomerDetails.class);
+
+        NewCustomerDetails details = result.block();
+        if(details != null){
+            return details;
+        }
+        return new NewCustomerDetails();
     }
 
 

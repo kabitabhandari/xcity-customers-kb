@@ -7,6 +7,7 @@ import com.things.customer.xcitycustomerskb.model.NewCustomerRequestBody;
 import com.things.customer.xcitycustomerskb.service.CustomerDetailsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -67,7 +68,7 @@ public class CustomerController {
      * @return String
      */
     @PostMapping(path = CREATE_NEW_CUSTOMER)
-    public ResponseEntity<NewCustomerDetails> postNewCustomer(@RequestBody NewCustomerRequestBody requestBody) {
+    public NewCustomerDetails postNewCustomer(@RequestBody NewCustomerRequestBody requestBody) {
         return customerDetailsService.getNew(requestBody);
     }
 
