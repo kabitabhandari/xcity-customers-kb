@@ -113,9 +113,9 @@ public class CustomerDetailsProvider {
         requestBodyUsingMultiValueMap.add("value1", "america1");
         requestBodyUsingMultiValueMap.add("value2", "nepal2");
 
-        String url = "http://localhost:8089/mock/cust/new";
+        //String url = "http://localhost:8089/mock/cust/new";
         Mono<NewCustomerDetails> result = WebClient.create().post()
-                .uri(url)
+                .uri(UriComponentsBuilder.newInstance().scheme("http").host(MOCK_BASE_URL).path(POST_NEW_CUSTOMER_CONTEXT).build().toUriString())
                 .headers(h -> addCustomersHeaders(h))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
