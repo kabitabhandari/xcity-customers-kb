@@ -11,10 +11,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
+import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriBuilder;
@@ -115,23 +117,39 @@ public class CustomerDetailsProvider {
     }
     public NewCustomerDetails postCustomerUsingWebClient(NewCustomerRequestBody requestBody){
         MultiValueMap<String, String> requestBodyUsingMultiValueMap = new LinkedMultiValueMap<>();
-        requestBodyUsingMultiValueMap.add("value1", "america");
-        requestBodyUsingMultiValueMap.add("value2", "nepal");
+        requestBodyUsingMultiValueMap.add("value1", "america1");
+        requestBodyUsingMultiValueMap.add("value2", "nepal2");
 
-        Mono<NewCustomerDetails> result =
-                WebClient.create("http://localhost:8089/mock")
-                .post()
-                .uri(new Function<UriBuilder, URI>() {
-                    @Override
-                    public URI apply(UriBuilder uriBuilder) {
-                        return uriBuilder.path("/cust").path("/new").build();
-                    }
-                })
-                .header("header-name-1", "header-value-1")
-                .header("header-name-2", "header-value-2")
+        String url = "http://localhost:8089/mock/cust/new";
+        Mono<NewCustomerDetails> result = WebClient.create().post()
+                .uri(url)
+                .headers(this::addCustomersHeaders)
+                .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                //.body(BodyInserters.fromValue(requestBody))
-                .bodyValue(requestBodyUsingMultiValueMap)
+                .body(Mono.just(requestBody), NewCustomerRequestBody.class)
+                .retrieve()
+                .bodyToMono(NewCustomerDetails.class);
+
+        NewCustomerDetails details = result.block();
+        if(details != null){
+            return details;
+        }
+        return new NewCustomerDetails();
+    }
+
+
+    public NewCustomerDetails post(){
+        MultiValueMap<String, String> requestBodyUsingMultiValueMap = new LinkedMultiValueMap<>();
+        requestBodyUsingMultiValueMap.add("value1", "america1");
+        requestBodyUsingMultiValueMap.add("value2", "nepal2");
+
+        String url = "http://localhost:8089/mock/cust/new";
+        Mono<NewCustomerDetails> result = WebClient.create().post()
+                .uri(url)
+                .headers(this::addCustomersHeaders)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromFormData(requestBodyUsingMultiValueMap))
                 .retrieve()
                 .bodyToMono(NewCustomerDetails.class);
 
@@ -204,5 +222,11 @@ public class CustomerDetailsProvider {
         } catch (JsonProcessingException e) {
             e.getMessage();
         }
+    }
+
+    private void addCustomersHeaders(HttpHeaders httpHeaders) {
+        httpHeaders.set("header1", "value1");
+        httpHeaders.set("header2", "value2");
+        httpHeaders.set("header3", "value3");
     }
 }
