@@ -2,6 +2,7 @@ package com.things.customer.xcitycustomerskb.pega.provider;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.things.customer.xcitycustomerskb.pega.request.pega.PegaRequest;
+import com.things.customer.xcitycustomerskb.pega.request.wrapper.WrapperRequest;
 import com.things.customer.xcitycustomerskb.pega.response.pegaresponse.*;
 import com.things.customer.xcitycustomerskb.pega.response.wrapperresponse.*;
 import com.things.customer.xcitycustomerskb.pega.util.MappingUtility;
@@ -37,7 +38,7 @@ class WrapperProviderTest {
     WrapperProvider wrapperProvider;
 
     @Test
-    public void postCallPegaShouldReturnPegaResponseList() {
+    public void postCallPegaShouldReturnPegaResponse() {
         ResponseEntity<PegaResponse> responseEntity = new ResponseEntity<>(mockPegaResponseFromResponseEntity(), HttpStatus.OK);
         PegaResponse expectedResponse = responseEntity.getBody();
         when(restTemplate.postForEntity(
@@ -47,7 +48,20 @@ class WrapperProviderTest {
         ).thenReturn(responseEntity);
 
         PegaResponse actualResponse = this.wrapperProvider.postCallPega(mockPegaRequestBody());
-        System.out.println(actualResponse);
+        Assertions.assertEquals(expectedResponse, actualResponse);
+    }
+
+    @Test
+    public void postCallPegaShouldReturnEmptyPegaResponse() {
+        ResponseEntity<PegaResponse> responseEntity = new ResponseEntity<>(new PegaResponse(), HttpStatus.INTERNAL_SERVER_ERROR);
+        PegaResponse expectedResponse = responseEntity.getBody();
+        when(restTemplate.postForEntity(
+                ArgumentMatchers.anyString(),  //url
+                ArgumentMatchers.any(),        //request body
+                ArgumentMatchers.<Class<PegaResponse>>any())  //response class
+        ).thenReturn(responseEntity);
+
+        PegaResponse actualResponse = this.wrapperProvider.postCallPega(mockPegaRequestBody());
         Assertions.assertEquals(expectedResponse, actualResponse);
     }
 
@@ -55,17 +69,24 @@ class WrapperProviderTest {
     public void mapToInteractionShouldReturnWrapperResponse() {
         WrapperResponse expectedWrapperResponse = wrapperProvider.mapPegaResponseToWrapperResponse(mockPegaResponse());
 
-        Assertions.assertEquals(expectedWrapperResponse, actualWrapperResponse(), "Wrapper response mis-match");
+        Assertions.assertEquals(expectedWrapperResponse, expectedWrapperResponse(), "Wrapper response mis-match");
     }
 
     @Test
     public void mapToInteractionShouldReturnWrapperResponse2() {
         WrapperResponse expectedWrapperResponse = wrapperProvider.mapPegaResponseToWrapperResponse(mockPegaResponseFromFile());
 
-        Assertions.assertEquals(expectedWrapperResponse, actualWrapperResponseFromFile(), "Wrapper response mis-match");
+        Assertions.assertEquals(expectedWrapperResponse, expectedWrapperResponseFromFile(), "Wrapper response mis-match");
     }
 
-    private WrapperResponse actualWrapperResponse() {
+    @Test
+    public void translateToGeneratedId() {
+        String partyGuid = "12rto-pp87-uhy7-kmnh";
+        String actual = wrapperProvider.translateToGeneratedId(partyGuid);
+        Assertions.assertEquals("rto-pp-uhy-kmnh", actual);
+    }
+
+    private WrapperResponse expectedWrapperResponse() {
         WrapperResponse wrapperResponse = new WrapperResponse();
         wrapperResponse.setBoxOfficeID("mock-box-office-id");
         List<WrapperMovie> shortedListedMoviesList = new ArrayList<>();
@@ -117,12 +138,11 @@ class WrapperProviderTest {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         return null;
     }
 
 
-    private WrapperResponse actualWrapperResponseFromFile() {
+    private WrapperResponse expectedWrapperResponseFromFile() {
         ObjectMapper mapper = new ObjectMapper();
         try {
             WrapperResponse wrapperResponse = mapper.readValue(new File("src/test/Wrapper.json"), WrapperResponse.class);
@@ -187,5 +207,25 @@ class WrapperProviderTest {
         pegaResponse.setPegaMovies(pegaMovieList);
 
         return pegaResponse;
+    }
+
+    private WrapperRequest mockWrapperRequest() {
+        WrapperRequest wrapperRequest = new WrapperRequest();
+        wrapperRequest.setChannel("mock-channel");
+        wrapperRequest.setName("mock-name");
+        wrapperRequest.setMovieID("mock-movie");
+        wrapperRequest.setShortMovieID("mock-short");
+        wrapperRequest.setZoneIDs("mock-zone");
+        wrapperRequest.setShortListedMovieGUID("yu-678-ku-p98");
+        return wrapperRequest;
+
+    }
+
+    private PegaResponse mockPG() {
+        PegaResponse pegaResponse = new PegaResponse();
+        pegaResponse.setStatus("ok");
+        pegaResponse.setBoxOfficeID("mock-box-office-id");
+        return pegaResponse;
+
     }
 }

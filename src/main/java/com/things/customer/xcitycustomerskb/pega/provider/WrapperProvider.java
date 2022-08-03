@@ -63,11 +63,10 @@ public class WrapperProvider {
         HttpEntity<PegaRequest> requestEntity = new HttpEntity<>(pegaRequestBody, headers);
         ResponseEntity<PegaResponse> response =
                 restTemplate.postForEntity(url, requestEntity, PegaResponse.class);
-        if (response.getBody() != null) {
+        if (response != null && response.getBody() != null && response.getBody().getStatus()!=null) {
             return response.getBody();
-        } else {
-            return new PegaResponse();   // do not return null, instead return an empty object, to avoid null pointer exception.
         }
+        return new PegaResponse();   // do not return null, instead return an empty object, to avoid null pointer exception.
     }
 
     /**
@@ -206,7 +205,7 @@ public class WrapperProvider {
     }
 
 
-    private String translateToGeneratedId(String partyGuid) {
+    public String translateToGeneratedId(String partyGuid) {
         //remove all numbers:
         return partyGuid.replaceAll("\\d", "");
     }
