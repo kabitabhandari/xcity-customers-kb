@@ -20,7 +20,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -40,28 +39,28 @@ class WrapperProviderTest {
     @Test
     public void postCallPegaShouldReturnPegaResponseList() {
         ResponseEntity<PegaResponse> responseEntity = new ResponseEntity<>(mockPegaResponseFromResponseEntity(), HttpStatus.OK);
-        List<PegaResponse> expectedResponse = Collections.singletonList(responseEntity.getBody());
+        PegaResponse expectedResponse = responseEntity.getBody();
         when(restTemplate.postForEntity(
                 ArgumentMatchers.anyString(),  //url
                 ArgumentMatchers.any(),        //request body
                 ArgumentMatchers.<Class<PegaResponse>>any())  //response class
         ).thenReturn(responseEntity);
 
-        List<PegaResponse> actualResponse = this.wrapperProvider.postCallPega(mockPegaRequestBody());
+        PegaResponse actualResponse = this.wrapperProvider.postCallPega(mockPegaRequestBody());
         System.out.println(actualResponse);
         Assertions.assertEquals(expectedResponse, actualResponse);
     }
 
     @Test
     public void mapToInteractionShouldReturnWrapperResponse() {
-        WrapperResponse expectedWrapperResponse = wrapperProvider.mapToInteraction(mockPegaResponse());
+        WrapperResponse expectedWrapperResponse = wrapperProvider.mapPegaResponseToWrapperResponse(mockPegaResponse());
 
         Assertions.assertEquals(expectedWrapperResponse, actualWrapperResponse(), "Wrapper response mis-match");
     }
 
     @Test
     public void mapToInteractionShouldReturnWrapperResponse2() {
-        WrapperResponse expectedWrapperResponse = wrapperProvider.mapToInteraction(mockPegaResponseFromFile());
+        WrapperResponse expectedWrapperResponse = wrapperProvider.mapPegaResponseToWrapperResponse(mockPegaResponseFromFile());
 
         Assertions.assertEquals(expectedWrapperResponse, actualWrapperResponseFromFile(), "Wrapper response mis-match");
     }
@@ -102,19 +101,17 @@ class WrapperProviderTest {
         return wrapperResponse;
     }
 
-    private List<PegaResponse> mockPegaResponse() {
-        List<PegaResponse> pegaResponseList = new ArrayList<>();
+    private PegaResponse mockPegaResponse() {
         PegaResponse pegaResponse = mockPegaResponseFromResponseEntity();
-        pegaResponseList.add(pegaResponse);
-        return pegaResponseList;
+        return pegaResponse;
     }
 
 
-    private List<PegaResponse> mockPegaResponseFromFile() {
+    private PegaResponse mockPegaResponseFromFile() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            PegaResponse[] pegaResponse = mapper.readValue(new File("src/test/Pega.json"), PegaResponse[].class);
-            return Arrays.asList(pegaResponse);
+            PegaResponse pegaResponse = mapper.readValue(new File("src/test/Pega.json"), PegaResponse.class);
+            return pegaResponse;
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (Exception ex) {
