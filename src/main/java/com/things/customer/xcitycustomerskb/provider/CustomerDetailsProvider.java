@@ -77,7 +77,7 @@ public class CustomerDetailsProvider {
         return Arrays.asList(response.getBody());
     }
 
-    public CustomerDetailsResponse displayEachCustomerRecord(String customerId, String memberChannel) {
+    public CustomerDetailsResponse displayEachCustomerRecordUsingRestTemplate(String customerId, String memberChannel) {
         String url = buildUrlForGetEachCustomer(customerId).toUriString();
 
         HttpHeaders headers = new HttpHeaders();
@@ -95,6 +95,31 @@ public class CustomerDetailsProvider {
         return response.getBody();
 
 
+    }
+    public CustomerDetailsResponse displayEachCustomerRecordUsingWebClient(String customerId, String memberChannel) {
+
+        Mono<CustomerDetailsResponse> result = WebClient.create().get()
+                .uri(UriComponentsBuilder.newInstance()
+                        .scheme("http")
+                        .host(MOCK_BASE_URL)
+                        .path(GET_EACH_CUSTOMERS_CONTEXT)
+                        .path(customerId)
+                        .path(DETAILS).build().toUriString())
+                .headers(new Consumer<HttpHeaders>() {
+                    @Override
+                    public void accept(HttpHeaders httpHeaders) {
+                        httpHeaders.set("channel", memberChannel);
+                    }
+                })
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(CustomerDetailsResponse.class);
+
+        CustomerDetailsResponse details = result.block();
+        if (details != null) {
+            return details;
+        }
+        return new CustomerDetailsResponse();
     }
 
     public NewCustomerDetails postCustomerUsingRestTemplate(NewCustomerRequestBody requestBody) {

@@ -9,9 +9,7 @@ import com.things.customer.xcitycustomerskb.provider.CustomerDetailsProvider;
 import com.things.customer.xcitycustomerskb.responsemodel.CustomerDetailsResponse;
 import com.things.customer.xcitycustomerskb.util.Constants;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -46,7 +44,8 @@ public class CustomerDetailsService {
     }
 
     public CustomerDetails getEachDetails(String customerId, String memberChannel) {
-        CustomerDetailsResponse response = customerDetailsProvider.displayEachCustomerRecord(customerId, memberChannel);
+        //CustomerDetailsResponse response = customerDetailsProvider.displayEachCustomerRecordUsingRestTemplate(customerId, memberChannel);
+        CustomerDetailsResponse response = customerDetailsProvider.displayEachCustomerRecordUsingWebClient(customerId, memberChannel);
         return customerDetailsMapper.mapCustomerDetailsFromServiceCallToModel(response);
     }
 

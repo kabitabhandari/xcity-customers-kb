@@ -2,6 +2,7 @@ package com.things.customer.xcitycustomerskb.provider;
 
 import com.things.customer.xcitycustomerskb.model.NewCustomerDetails;
 import com.things.customer.xcitycustomerskb.model.NewCustomerRequestBody;
+import com.things.customer.xcitycustomerskb.responsemodel.CustomerDetailsResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -62,11 +63,11 @@ class CustomerDetailsProviderTest {
 
             when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
 
-            when(responseSpec.bodyToMono(NewCustomerDetails.class)).thenReturn(Mono.just(mockedResponse()));
+            when(responseSpec.bodyToMono(NewCustomerDetails.class)).thenReturn(Mono.just(mockedResponseForCreateCustomer()));
 
 
-            NewCustomerDetails actualResponse = provider.postCustomerUsingWebClient(mockRequestBody());
-            Assertions.assertEquals(mockedResponse().getEmail(), actualResponse.getEmail(), "Response mis-match");
+            NewCustomerDetails actualResponse = provider.postCustomerUsingWebClient(mockRequestBodyForCreateCustomer());
+            Assertions.assertEquals(mockedResponseForCreateCustomer().getEmail(), actualResponse.getEmail(), "Response mis-match");
 
         }
     }
@@ -92,28 +93,65 @@ class CustomerDetailsProviderTest {
             when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
 
             when(responseSpec.bodyToMono(NewCustomerDetails.class))
-                    .thenReturn(Mono.just(mockedResponse()));
+                    .thenReturn(Mono.just(mockedResponseForCreateCustomer()));
 
 
             NewCustomerDetails actualResponse = provider.post();
 
-            Assertions.assertEquals(mockedResponse().getEmail(), actualResponse.getEmail(), "Response mis-match");
+            Assertions.assertEquals(mockedResponseForCreateCustomer().getEmail(), actualResponse.getEmail(), "Response mis-match");
 
         }
     }
 
-    private NewCustomerDetails mockedResponse() {
+    @Test
+    void displayEachCustomerRecordUsingWebClientShouldGETSuccessfully(){
+        try (MockedStatic<WebClient> webClientMockedStatic = mockStatic(WebClient.class)) {
+
+            webClientMockedStatic.when(WebClient::create).thenReturn(webClient);
+
+            when(webClient.get()).thenReturn(requestHeadersUriSpec);
+
+            when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestBodySpec);
+
+            when(requestBodySpec.headers(any())).thenReturn(requestBodySpec);
+
+            when(requestBodySpec.accept(any())).thenReturn(requestBodySpec);
+
+            when(requestBodySpec.retrieve()).thenReturn(responseSpec);
+
+            when(responseSpec.bodyToMono(CustomerDetailsResponse.class))
+                    .thenReturn(Mono.just(mockedResponseForGETCustomer()));
+
+
+            CustomerDetailsResponse actualResponse = provider.displayEachCustomerRecordUsingWebClient("123", "highway");
+
+            Assertions.assertEquals(mockedResponseForGETCustomer().getFirstName(), actualResponse.getFirstName(), "Response mis-match");
+
+        }
+
+    }
+
+    private NewCustomerDetails mockedResponseForCreateCustomer() {
         NewCustomerDetails response = new NewCustomerDetails();
         response.setEmail("edsmith@test.com");
         return response;
 
     }
 
-    private NewCustomerRequestBody mockRequestBody() {
+    private NewCustomerRequestBody mockRequestBodyForCreateCustomer() {
         NewCustomerRequestBody requestBody = new NewCustomerRequestBody();
         requestBody.setValue1("mock1");
         requestBody.setValue2("mock2");
         return requestBody;
+    }
+
+    private CustomerDetailsResponse mockedResponseForGETCustomer() {
+        CustomerDetailsResponse response = new CustomerDetailsResponse();
+        response.setAge("25");
+        response.setFirstName("kabita");
+        response.setLastName("bhandari");
+        return response;
+
     }
 
 }
